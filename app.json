@@ -1,12 +1,44 @@
 {
-  "pages":[
+  "pages": [
     "pages/index/index",
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/image/imageResizer/imageResizer",
+    "pages/image/waterMarker/waterMarker",
+    "pages/image/image",
+    "pages/image/imageClipper/imageClipper",
+    "pages/calculator/depth/depth",
+    "pages/calculator/calculator"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle":"black"
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTitleText": "洋芋摄影师助手",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "backgroundColor": "#ffffff",
+    "borderStyle": "white",
+    "color": "#000000",
+    "selectedColor": "#66ccff",
+    "list": [
+      {
+        "pagePath": "pages/image/image",
+        "text": "图片工具",
+        "iconPath": "/images/image.png",
+        "selectedIconPath": "/images/image_selected.png"
+      },
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "/images/home.png",
+        "selectedIconPath": "/images/home_selected.png"
+      },
+      {
+        "pagePath": "pages/calculator/calculator",
+        "text": "摄影计算器",
+        "iconPath": "/images/calculator.png",
+        "selectedIconPath": "/images/calculator_selected.png"
+      }
+    ]
   }
 }

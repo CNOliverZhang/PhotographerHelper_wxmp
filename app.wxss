@@ -1,10 +1,15 @@
-/**app.wxss**/
-.container {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  padding: 200rpx 0;
-  box-sizing: border-box;
-} 
+@import 'wxss/container.wxss';
+@import 'wxss/button.wxss';
+@import 'wxss/text.wxss';
+@import 'wxss/size.wxss';
+@import 'wxss/element.wxss';
+@import 'wxss/component.wxss';
+
+page {
+  padding-top: 40rpx;
+  padding-bottom: 40rpx;
+  background-image: url(http://image.potatofield.cn/18-10-29/18567134.jpg);
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: bottom;
+}
