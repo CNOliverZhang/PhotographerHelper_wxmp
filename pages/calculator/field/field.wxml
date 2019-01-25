@@ -1,0 +1,64 @@
+<view class='container'>
+  <view class='subtitle'>
+    <text>选择焦距模式</text>
+  </view>
+</view>
+<view class='container row-flex'>
+  <view class='half'>
+    <button class='{{modeButton.equivalent}}' bindtap='setMode' id='equivalent'>等效焦距</button>
+  </view>
+  <view class='half'>
+    <button class='{{modeButton.real}}' bindtap='setMode' id='real'>实际焦距</button>
+  </view>
+</view>
+<view wx:if="{{mode == 'real'}}" class='frame'>
+  <view class='container'>
+    <view class='subtitle'>
+      <text>选择相机画幅</text>
+    </view>
+  </view>
+  <scroll-view scroll-x='true' class='scroll-button-set-holder'>
+    <view class='scroll-button-set'>
+      <button class='scroll-button {{frameButton.fullFrame}}' bindtap='setFrame' id='fullFrame'>全画幅</button>
+      <button class='scroll-button {{frameButton.apsC}}' bindtap='setFrame' id='apsC'>标准APC-C画幅</button>
+      <button class='scroll-button {{frameButton.apsCanonC}}' bindtap='setFrame' id='apsCanonC'>佳能APC-C画幅</button>
+      <button class='scroll-button {{frameButton.apsCanonH}}' bindtap='setFrame' id='apsCanonH'>佳能APC-H画幅</button>
+      <button class='scroll-button {{frameButton.mft}}' bindtap='setFrame' id='mft'>Micro 4/3 画幅</button>
+      <button class='scroll-button {{frameButton.oneInch}}' bindtap='setFrame' id='oneInch'>一英寸画幅</button>
+    </view>
+  </scroll-view>
+</view>
+<view class='container'>
+  <view class='subtitle'>
+    <text>请输入焦距或视角</text>
+  </view>
+  <view class='row-flex'>
+    <view class='one-third content'>
+      <text>焦距</text>
+    </view>
+    <input class='length {{inputs.length}}' value='{{length}}' placeholder='请输入焦距' placeholder-class='content placeholder' type='digit' bindfocus='focus' bindblur='blur' bindinput='input' id='length'></input>
+  </view>
+  <view class='row-flex'>
+    <view class='one-third content'>
+      <text>水平视角</text>
+    </view>
+    <input class='field {{inputs.horizontal}}' value='{{horizontal}}' placeholder='请输入水平视角' placeholder-class='content placeholder' type='digit' bindfocus='focus' bindblur='blur' bindinput='input' id='horizontal'></input>
+  </view>
+  <view class='row-flex'>
+    <view class='one-third content'>
+      <text>垂直视角</text>
+    </view>
+    <input class='field {{inputs.vertical}}' value='{{vertical}}' placeholder='请输入垂直视角' placeholder-class='content placeholder' type='digit' bindfocus='focus' bindblur='blur' bindinput='input' id='vertical'></input>
+  </view>
+  <view class='row-flex'>
+    <view class='one-third content'>
+      <text>对角线视角</text>
+    </view>
+    <input class='field {{inputs.diagonal}}' value='{{diagonal}}' placeholder='请输入对角线视角' placeholder-class='content placeholder' type='digit' bindfocus='focus' bindblur='blur' bindinput='input' id='diagonal'></input>
+  </view>
+</view>
+<view class='container'>
+  <view class='subcontent'>
+    <text>以上计算结果为正切投影镜头，不包括鱼眼镜头</text>
+  </view>
+</view>

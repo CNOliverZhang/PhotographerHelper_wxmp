@@ -1,0 +1,35 @@
+<view class='container'>
+  <view class='logo-holder'>
+    <image class='logo' mode='widthFix' src='/images/logo/main.png'></image>
+  </view>
+</view>
+<view class='container'>
+  <view class='tile-holder'>
+    <button class='tile help' bindtap='gotoPage' id='help'>
+      <image mode='aspectFit' src='/images/tile/help.png'></image>
+      <text>帮助</text>
+      <view class='button-mask' hover-class='button-mask__hover'></view>
+    </button>
+    <button class='tile mine' bindtap='gotoPage' id='mine'>
+      <image mode='aspectFit' src='/images/tile/mine.png'></image>
+      <text>我的</text>
+      <view class='button-mask' hover-class='button-mask__hover'></view>
+    </button>
+    <button class='tile feedback' open-type='feedback'>
+      <image mode='aspectFit' src='/images/tile/feedback.png'></image>
+      <text>反馈</text>
+      <view class='button-mask' hover-class='button-mask__hover'></view>
+    </button>
+  </view>
+</view>
+<view class='container'>
+  <view class='subcontent center'>
+    <text>如果您觉得本工具好用，不妨分享给更多人吧~</text>
+  </view>
+</view>
+<view class='container'>
+  <button class='main-button' open-type='share'>
+    <text>分享</text>
+    <view class='button-mask' hover-class='button-mask__hover'></view>
+  </button>
+</view>

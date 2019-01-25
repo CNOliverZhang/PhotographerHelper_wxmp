@@ -9,10 +9,11 @@
 		"postcss": true,
 		"minified": true,
 		"newFeature": true,
-		"autoAudits": false
+		"autoAudits": false,
+		"uglifyFileName": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.4.2",
+	"libVersion": "2.5.1",
 	"appid": "wx548c1b9a04cffd4b",
 	"projectname": "PhotographerHelper_wxmp",
 	"debugOptions": {

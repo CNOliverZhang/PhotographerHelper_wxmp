@@ -1,21 +1,23 @@
-/**index.wxss**/
-.userinfo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.logo-holder {
+  margin-top: 100rpx;
+  margin-bottom: 100rpx;
+  margin-left: auto;
+  margin-right: auto;
+  width: 60vw;
 }
 
-.userinfo-avatar {
-  width: 128rpx;
-  height: 128rpx;
-  margin: 20rpx;
-  border-radius: 50%;
+.logo {
+  width: 100%;
 }
 
-.userinfo-nickname {
-  color: #aaa;
+.mine {
+  background-color: #34a853;
 }
 
-.usermotto {
-  margin-top: 200px;
+.help {
+  background-color: #ea4c89;
+}
+
+.feedback {
+  background-color: #fbbc05;
 }

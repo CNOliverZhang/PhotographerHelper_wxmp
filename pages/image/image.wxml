@@ -1,1 +1,35 @@
-<view class='card'>测试</view>
+<view class='container'>
+  <button class='block-button' bindtap='gotoPage' id='momentsImage'>
+    <view class='row-flex moments'>
+      <image class='button-image' mode='aspectFit' src='/images/button/moments.png'></image>
+    </view>
+    <view class='button-mask' hover-class='button-mask__hover'></view>
+  </button>
+</view>
+<view class='container'>
+  <button class='block-button' bindtap='gotoPage' id='imageClipper'>
+    <view class='row-flex clipper'>
+      <image class='button-image' mode='aspectFit' src='/images/button/clipper.png'></image>
+    </view>
+    <view class='button-mask' hover-class='button-mask__hover'></view>
+  </button>
+</view>
+<view class='container'>
+  <button class='block-button' bindtap='gotoPage' id='waterMarker'>
+    <view class='row-flex watermark'>
+      <image class='button-image' mode='aspectFit' src='/images/button/watermark.png'></image>
+    </view>
+    <view class='button-mask' hover-class='button-mask__hover'></view>
+  </button>
+</view>
+<view class='container'>
+  <view class='subcontent center'>
+    <text>如果您觉得本工具好用，不妨分享给更多人吧~</text>
+  </view>
+</view>
+<view class='container'>
+  <button class='main-button' open-type='share'>
+    <text>分享</text>
+    <view class='button-mask' hover-class='button-mask__hover'></view>
+  </button>
+</view>

@@ -1,1 +1,21 @@
-/* pages/image/image.wxss */
+.button-image {
+  height: 60%;
+}
+
+.moments {
+  width: 100%;
+  height: 100%;
+  background-color: #34a853;
+}
+
+.clipper {
+  width: 100%;
+  height: 100%;
+  background-color: #ea4c89;
+}
+
+.watermark {
+  width: 100%;
+  height: 100%;
+  background-color: #fbbc05;
+}

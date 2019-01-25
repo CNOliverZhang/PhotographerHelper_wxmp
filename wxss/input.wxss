@@ -1,0 +1,25 @@
+input {
+  position: relative;
+}
+
+input::after {
+  position: absolute;
+  right: 0;
+  bottom: 2rpx;
+  color: #888888;
+  font-size: 24rpx;
+}
+
+.input-focused {
+  border-bottom-style: solid;
+  border-bottom-color: #66ccff;
+  border-bottom-width: 3rpx;
+  transition: 0.5s;
+}
+
+.input-blurred {
+  border-bottom-style: solid;
+  border-bottom-color: #888888;
+  border-bottom-width: 3rpx;
+  transition: 0.5s;
+}

@@ -1,0 +1,264 @@
+<view class='container'>
+  <view class='title'>
+    <text>使用指南</text>
+  </view>
+</view>
+<view class='container'>
+  <view class='subtitle'>
+    <text>朋友圈免压图片生成器</text>
+  </view>
+  <view class='content'>
+    <text>在微信朋友圈发布的图片会经过压缩，造成图片质量下降。使用本模块处理过的图片在发布到朋友圈时不会被微信再次压缩，因此您可以使用本模块对图片进行处理，以便在朋友圈发布高清图片。</text>
+  </view>
+</view>
+<view class='container row-flex'>
+  <view class='half'>
+    <button class='side-button' bindtap='showPanel' id='momentsImage'>
+      <text>了解更多</text>
+      <view class='button-mask' hover-class='button-mask__hover'></view>
+    </button>
+  </view>
+  <view class='half'>
+    <button class='main-button' bindtap='gotoPage' id='momentsImage' data-parent='image'>
+      <text>前往</text>
+      <view class='button-mask' hover-class='button-mask__hover'></view>
+    </button>
+  </view>
+</view>
+<view class='container'>
+  <view class='subtitle'>
+    <text>常用比例裁剪工具</text>
+  </view>
+  <view class='content'>
+    <text>本模块预设了若干常用图片比例，您可以使用本模块对图片进行裁剪。您也可以裁剪自定义比例的图片，还可以将自定义比例保存为预设以便再次使用。您还可以对图片进行批量裁剪。</text>
+  </view>
+</view>
+<view class='container row-flex'>
+  <view class='half'>
+    <button class='side-button' bindtap='showPanel' id='imageClipper'>
+      <text>了解更多</text>
+      <view class='button-mask' hover-class='button-mask__hover'></view>
+    </button>
+  </view>
+  <view class='half'>
+    <button class='main-button' bindtap='gotoPage' id='imageClipper' data-parent='image'>
+      <text>前往</text>
+      <view class='button-mask' hover-class='button-mask__hover'></view>
+    </button>
+  </view>
+</view>
+<view class='container'>
+  <view class='subtitle'>
+    <text>图片自定义加水印工具</text>
+  </view>
+  <view class='content'>
+    <text>这是占位符</text>
+  </view>
+</view>
+<view class='container row-flex'>
+  <view class='half'>
+    <button class='side-button' bindtap='showPanel' id='waterMarker'>
+      <text>了解更多</text>
+      <view class='button-mask' hover-class='button-mask__hover'></view>
+    </button>
+  </view>
+  <view class='half'>
+    <button class='main-button' bindtap='gotoPage' id='waterMarker' data-parent='image'>
+      <text>前往</text>
+      <view class='button-mask' hover-class='button-mask__hover'></view>
+    </button>
+  </view>
+</view>
+<view class='container'>
+  <view class='subtitle'>
+    <text>景深范围计算工具</text>
+  </view>
+  <view class='content'>
+    <text>这是占位符</text>
+  </view>
+</view>
+<view class='container row-flex'>
+  <view class='half'>
+    <button class='side-button' bindtap='showPanel' id='depth'>
+      <text>了解更多</text>
+      <view class='button-mask' hover-class='button-mask__hover'></view>
+    </button>
+  </view>
+  <view class='half'>
+    <button class='main-button' bindtap='gotoPage' id='depth' data-parent='calculator'>
+      <text>前往</text>
+      <view class='button-mask' hover-class='button-mask__hover'></view>
+    </button>
+  </view>
+</view>
+<view class='container'>
+  <view class='subtitle'>
+    <text>焦距视角换算工具</text>
+  </view>
+  <view class='content'>
+    <text>这是占位符</text>
+  </view>
+</view>
+<view class='container row-flex'>
+  <view class='half'>
+    <button class='side-button' bindtap='showPanel' id='field'>
+      <text>了解更多</text>
+      <view class='button-mask' hover-class='button-mask__hover'></view>
+    </button>
+  </view>
+  <view class='half'>
+    <button class='main-button' bindtap='gotoPage' id='field' data-parent='calculator'>
+      <text>前往</text>
+      <view class='button-mask' hover-class='button-mask__hover'></view>
+    </button>
+  </view>
+</view>
+<view class='subseparator'></view>
+<view class='container'>
+  <view class='title'>
+    <text>版本信息</text>
+  </view>
+  <view class='subtitle'>
+    <text>当前版本</text>
+  </view>
+  <view class='content'>
+    <text>2019年1月23日 0.1.190123 Beta版</text>
+  </view>
+  <view class='subtitle'>
+    <text>历史版本</text>
+  </view>
+  <button class='main-button' bindtap='showPanel' id='history'>
+    <text>点击查看历史版本</text>
+    <view class='button-mask' hover-class='button-mask__hover'></view>
+  </button>
+</view>
+<view class='separator'></view>
+<view class='container'>
+  <button class='side-button' bindtap='goBack'>
+    <text>返回</text>
+    <view class='button-mask' hover-class='button-mask__hover'></view>
+  </button>
+</view>
+<view class='{{history}}'>
+  <view class='panel'>
+    <view class='container'>
+      <scroll-view scroll-y='true' class='panel-text-holder'>
+        <view class='subtitle'>
+          <text>版本历史</text>
+        </view>
+        <view class='content'>
+          <text>2019年12月23日 0.1.190123 Beta版</text>
+        </view>
+        <view class='content'>
+          <text>2019年12月24日 0.2.190124 Beta版</text>
+        </view>
+      </scroll-view>
+    </view>
+    <view class='container panel-button-holder'>
+      <button class='text-button' bindtap='hidePanel' id='history'>
+        <text>确定</text>
+        <view class='button-mask' hover-class='button-mask__hover'></view>
+      </button>
+    </view>
+  </view>
+</view>
+<view class='{{momentsImage}}'>
+  <view class='panel'>
+    <view class='container'>
+      <scroll-view scroll-y='true' class='panel-text-holder'>
+        <view class='subtitle'>
+          <text>朋友圈免压图片生成器</text>
+        </view>
+        <view class='content'>
+          <text>这是占位符</text>
+        </view>
+      </scroll-view>
+    </view>
+    <view class='container panel-button-holder'>
+      <button class='text-button' bindtap='hidePanel' id='momentsImage'>
+        <text>确定</text>
+        <view class='button-mask' hover-class='button-mask__hover'></view>
+      </button>
+    </view>
+  </view>
+</view>
+<view class='{{imageClipper}}'>
+  <view class='panel'>
+    <view class='container'>
+      <scroll-view scroll-y='true' class='panel-text-holder'>
+        <view class='subtitle'>
+          <text>常用比例裁剪工具</text>
+        </view>
+        <view class='content'>
+          <text>这是占位符</text>
+        </view>
+      </scroll-view>
+    </view>
+    <view class='container panel-button-holder'>
+      <button class='text-button' bindtap='hidePanel' id='imageClipper'>
+        <text>确定</text>
+        <view class='button-mask' hover-class='button-mask__hover'></view>
+      </button>
+    </view>
+  </view>
+</view>
+<view class='{{waterMarker}}'>
+  <view class='panel'>
+    <view class='container'>
+      <scroll-view scroll-y='true' class='panel-text-holder'>
+        <view class='subtitle'>
+          <text>图片自定义加水印工具</text>
+        </view>
+        <view class='content'>
+          <text>这是占位符</text>
+        </view>
+      </scroll-view>
+    </view>
+    <view class='container panel-button-holder'>
+      <button class='text-button' bindtap='hidePanel' id='waterMarker'>
+        <text>确定</text>
+        <view class='button-mask' hover-class='button-mask__hover'></view>
+      </button>
+    </view>
+  </view>
+</view>
+<view class='{{depth}}'>
+  <view class='panel'>
+    <view class='container'>
+      <scroll-view scroll-y='true' class='panel-text-holder'>
+        <view class='subtitle'>
+          <text>景深范围计算工具</text>
+        </view>
+        <view class='content'>
+          <text>这是占位符</text>
+        </view>
+      </scroll-view>
+    </view>
+    <view class='container panel-button-holder'>
+      <button class='text-button' bindtap='hidePanel' id='depth'>
+        <text>确定</text>
+        <view class='button-mask' hover-class='button-mask__hover'></view>
+      </button>
+    </view>
+  </view>
+</view>
+<view class='{{field}}'>
+  <view class='panel'>
+    <view class='container'>
+      <scroll-view scroll-y='true' class='panel-text-holder'>
+        <view class='subtitle'>
+          <text>焦距视角换算工具</text>
+        </view>
+        <view class='content'>
+          <text>这是占位符</text>
+        </view>
+      </scroll-view>
+    </view>
+    <view class='container panel-button-holder'>
+      <button class='text-button' bindtap='hidePanel' id='field'>
+        <text>确定</text>
+        <view class='button-mask' hover-class='button-mask__hover'></view>
+      </button>
+    </view>
+  </view>
+</view>

@@ -1,24 +1,15 @@
-.instruction {
-  text-align: center;
-  font-size: 24rpx;
-  color: #787878;
-}
-
 .title {
-  margin-top: 40rpx;
-  margin-bottom: 40rpx;
-  text-align: center;
-  font-weight: bold;
+  margin-top: 30rpx;
+  margin-bottom: 30rpx;
   font-size: 48rpx;
-  color: #7a0c6e;
+  color: #66ccff;
 }
 
 .subtitle {
   margin-top: 30rpx;
   margin-bottom: 30rpx;
-  text-align: center;
   font-size: 40rpx;
-  color: #7a0c6e;
+  color: #66ccff;
 }
 
 .content {
@@ -27,7 +18,14 @@
   margin-bottom: 20rpx;
   line-height: 50rpx;
   font-size: 32rpx;
-  color: #787878;
+  color: #888888;
+}
+
+.subcontent {
+  margin-top: 15rpx;
+  margin-bottom: 15rpx;
+  font-size: 24rpx;
+  color: #888888;
 }
 
 .center {

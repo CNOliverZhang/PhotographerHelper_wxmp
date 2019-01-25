@@ -1,0 +1,31 @@
+.frame {
+  margin-bottom: -15rpx;
+}
+
+.placeholder {
+  margin: 0;
+}
+
+.subtitle {
+  color: #fbbc05;
+}
+
+.main-button {
+  background-color: #fbbc05;
+}
+
+.side-button {
+  color: #fbbc05;
+}
+
+.input-focused {
+  border-bottom-color: #fbbc05;
+}
+
+.length::after {
+  content: 'mm';
+}
+
+.field::after {
+  content: '度';
+}

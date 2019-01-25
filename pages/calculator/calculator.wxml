@@ -1,2 +1,27 @@
-<!--pages/calculator/calculator.wxml-->
-<text>pages/calculator/calculator.wxml</text>
+<view class='container'>
+  <button class='block-button' bindtap='gotoPage' id='depth'>
+    <view class='row-flex depth'>
+      <image class='button-image' mode='aspectFit' src='/images/button/depth.png'></image>
+    </view>
+    <view class='button-mask' hover-class='button-mask__hover'></view>
+  </button>
+</view>
+<view class='container'>
+  <button class='block-button' bindtap='gotoPage' id='field'>
+    <view class='row-flex field'>
+      <image class='button-image' mode='aspectFit' src='/images/button/field.png'></image>
+    </view>
+    <view class='button-mask' hover-class='button-mask__hover'></view>
+  </button>
+</view>
+<view class='container'>
+  <view class='subcontent center'>
+    <text>如果您觉得本工具好用，不妨分享给更多人吧~</text>
+  </view>
+</view>
+<view class='container'>
+  <button class='main-button' open-type='share'>
+    <text>分享</text>
+    <view class='button-mask' hover-class='button-mask__hover'></view>
+  </button>
+</view>

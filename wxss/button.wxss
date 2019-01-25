@@ -1,55 +1,125 @@
-.bar-button {
+button {
+  border-radius: 0;
+  padding-left: 0;
+  padding-right: 0;
+  margin-left: 0;
+  margin-right: 0;
+  line-height: initial;
+}
+
+button::after {
+  border-radius: 0;
+  border: none;
+}
+
+.main-button {
+  border-radius: 5rpx;
+  box-shadow: 3rpx 3rpx 5rpx #888888;
+  background-color: #66ccff;
+  color: #ffffff;
   height: 80rpx;
   line-height: 80rpx;
-  border-radius: 40rpx;
-  background-color: #7a0c6e;
-  color: #ffffff;
   font-size: 32rpx;
-}
-
-.bar-button__hover {
-  background-color: #620a58;
-}
-
-.return-button {
-  background-color: #aaaaaa;
-}
-
-.return-button__hover {
-  background-color: #919191;
+  transition: 0.5s;
 }
 
 .side-button {
-  flex-basis: 25%;
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
+  border-radius: 5rpx;
+  box-shadow: 3rpx 3rpx 5rpx #888888;
+  background-color: #ffffff;
+  color: #66ccff;
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 32rpx;
+  transition: 0.5s;
+}
+
+.text-button {
+  padding-left: 30rpx;
+  padding-right: 30rpx;
+  border-radius: 5rpx;
+  background-color: transparent;
+  color: #66ccff;
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 32rpx;
+}
+
+.side-text-button {
+  padding-left: 30rpx;
+  padding-right: 30rpx;
+  border-radius: 5rpx;
+  background-color: transparent;
+  color: #787878;
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 32rpx;
 }
 
 .block-button {
+  border-radius: 5rpx;
+  box-shadow: 3rpx 3rpx 5rpx #888888;
   background-color: #ffffff;
-  height: 45vw;
-  border-radius: 40rpx;
+  color: #66ccff;
+  height: 30vw;
+}
+
+.scroll-button {
+  display: inline-block;
+  padding-left: 30rpx;
+  padding-right: 30rpx;
+  margin: 15rpx;
+}
+
+.scroll-button-set {
+  white-space: nowrap;
+}
+
+.scroll-button-set-holder {
+  position: relative;
+  width: 100%;
+  margin-top: -15rpx;
+  margin-bottom: -15rpx;
+  padding-left: 15rpx;
+  padding-right: 15rpx;
+  box-sizing: border-box;
+}
+
+.scroll-button-set-holder::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 15rpx;
+  height: 100%;
+  width: 15rpx;
+  background-image: linear-gradient(to left, rgba(255,255,255,0), rgba(255,255,255,1));
+  z-index: 10;
+}
+
+.scroll-button-set-holder::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 15rpx;
+  height: 100%;
+  width: 15rpx;
+  background-image: linear-gradient(to right, rgba(255,255,255,0), rgba(255,255,255,1));
+  z-index: 10;
 }
 
 .button-mask {
   position: absolute;
   top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
+  opacity: 0;
+  background-color: #000000;
   z-index: 10;
+  transition: 0.5s;
 }
 
 .button-mask__hover {
-  position: absolute;
-  top: 0;
-  width: 100%;
-  height: 100%;
   opacity: 0.1;
-  background-color: #000000;
-  z-index: 10;
-}
-
-.button-image {
-  width: 100%;
-  height: 100%;
+  transition: 0.5s;
 }

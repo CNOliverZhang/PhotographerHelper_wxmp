@@ -1,0 +1,33 @@
+.tile-holder {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.tile {
+  width: 30%;
+  margin-top: 15rpx;
+  margin-bottom: 15rpx;
+  padding-bottom: 30rpx;
+  padding-top: 30rpx;
+  border-radius: 5rpx;
+  box-shadow: 3rpx 3rpx 5rpx #888888;
+  color: white;
+  font-size: 32rpx;
+  text-align: center;
+}
+
+.tile image {
+  margin-bottom: 30rpx;
+  height: 100rpx;
+  width: 100%;
+}
+
+.tile text {
+  margin-top: 30rpx;
+}
+
+.empty-tile {
+  box-shadow: 0 0 0;
+}
