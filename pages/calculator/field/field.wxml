@@ -11,7 +11,7 @@
     <button class='{{modeButton.real}}' bindtap='setMode' id='real'>实际焦距</button>
   </view>
 </view>
-<view wx:if="{{mode == 'real'}}" class='frame'>
+<view wx:if="{{mode == 'real'}}">
   <view class='container'>
     <view class='subtitle'>
       <text>选择相机画幅</text>
@@ -60,5 +60,20 @@
 <view class='container'>
   <view class='subcontent'>
     <text>以上计算结果为正切投影镜头，不包括鱼眼镜头</text>
+  </view>
+</view>
+<view class='separator'></view>
+<view class='container row-flex'>
+  <view class='half'>
+    <button class='side-button' bindtap='goBack'>
+      <text>返回</text>
+      <view class='button-mask' hover-class='button-mask__hover'></view>
+    </button>
+  </view>
+    <view class='half'>
+    <button class='main-button' open-type='share'>
+      <text>分享</text>
+      <view class='button-mask' hover-class='button-mask__hover'></view>
+    </button>
   </view>
 </view>

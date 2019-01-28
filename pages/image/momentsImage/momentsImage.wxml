@@ -1,2 +1,87 @@
-<!--pages/image/imageResizer/imageResizer.wxml-->
-<text>pages/image/imageResizer/imageResizer.wxml</text>
+<view wx:if="{{images.length == 0}}" class='container'>
+  <view class='subtitle'>
+    <text>请选择需要处理的图片</text>
+  </view>
+  <button class='select' bindtap='upload'>
+    <text>请选择一张或多张图片</text>
+    <view class='button-mask' hover-class='button-mask__hover'></view>
+  </button>
+</view>
+<view wx:if="{{images.length > 0}}">
+  <view class='container'>
+    <view class='subtitle'>
+      <text>已选择的图片</text>
+    </view>
+    <view class='content'>
+      <text>点击下方的图片预览以保存对应图片，或点击底部的按钮保存全部图片</text>
+    </view>
+  </view>
+  <view wx:for="{{images}}" wx:key="{{i}}">
+    <view class='container'>
+      <button class='block-button' bindtap='save' id='{{index}}'>
+        <view class='row-flex holder'>
+          <image class='preview' mode='aspectFill' src='{{item.path}}'></image>
+          <view wx:if="{{item.handled == false}}" class='info-panel'>
+            <view class='subcontent text-holder'>
+              <view class='attribute'>
+                <text>原始尺寸</text>
+              </view>
+              <view class='value'>
+                <text>{{item.width}}px × {{item.height}}px</text>
+              </view>
+            </view>
+          </view>
+          <view wx:if="{{item.handled == true}}" class='info-panel'>
+            <view class='subcontent text-holder'>
+              <view class='attribute'>
+                <text>原始尺寸</text>
+              </view>
+              <view class='value'>
+                <text>{{item.originalWidth}}px × {{item.originalHeight}}px</text>
+              </view>
+            </view>
+            <view class='subcontent text-holder'>
+              <view class='attribute'>
+                <text>处理后尺寸</text>
+              </view>
+              <view class='value'>
+                <text>{{item.width}}px × {{item.height}}px</text>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class='button-mask' hover-class='button-mask__hover'></view>
+      </button>
+    </view>
+  </view>
+  <view class='container row-flex'>
+    <view class='half'>
+      <button class='side-button' bindtap='upload'>
+        <text>重新选择</text>
+        <view class='button-mask' hover-class='button-mask__hover'></view>
+      </button>
+    </view>
+    <view class='half'>
+      <button class='main-button' bindtap='saveAll'>
+        <text>全部保存</text>
+        <view class='button-mask' hover-class='button-mask__hover'></view>
+      </button>
+    </view>
+  </view>
+</view>
+<view class='separator'></view>
+<view class='container row-flex'>
+  <view class='half'>
+    <button class='side-button' bindtap='goBack'>
+      <text>返回</text>
+      <view class='button-mask' hover-class='button-mask__hover'></view>
+    </button>
+  </view>
+  <view class='half'>
+    <button class='main-button' open-type='share'>
+      <text>分享</text>
+      <view class='button-mask' hover-class='button-mask__hover'></view>
+    </button>
+  </view>
+</view>
+<canvas canvas-id='image' class='image' style="width: {{width}}px; height: {{height}}px"></canvas>

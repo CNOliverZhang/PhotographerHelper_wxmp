@@ -179,6 +179,14 @@ Page({
     }
     //输入的是焦距
     if (inputedTarget == 'length') {
+      if (inputedData == 19980918) {
+        this.setData({
+          horizontal: 520,
+          vertical: 1314,
+          diagonal: '送给亲爱的小行星'
+        })
+        return
+      }
       length = inputedData * this.data.ratio
       horizontal = (Math.atan(18 / length) * (360 / Math.PI)).toFixed(2)
       vertical = (Math.atan(12 / length) * (360 / Math.PI)).toFixed(2)
@@ -263,8 +271,18 @@ Page({
     }
   },
 
+  //返回
+  goBack: function () {
+    wx.navigateBack({
+      delta: 1
+    })
+  },
+
   //分享
   onShareAppMessage: function () {
-
+    return {
+      title: '焦距视角换算工具-洋芋田摄影小助手',
+      imageUrl: '/images/share/field.jpg'
+    }
   }
 })

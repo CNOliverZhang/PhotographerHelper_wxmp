@@ -18,7 +18,6 @@ Page({
   onShareAppMessage: function () {
     return {
       title: '洋芋田摄影小助手',
-      path: '/pages/index/index',
       imageUrl: '/images/share/main.jpg'
     }
   }
