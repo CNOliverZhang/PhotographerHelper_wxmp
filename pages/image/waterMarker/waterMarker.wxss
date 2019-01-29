@@ -43,6 +43,14 @@
   color: #fbbc05;
 }
 
+.text-button {
+  color: #fbbc05;
+}
+
+.input-focused {
+  border-bottom-color: #fbbc05;
+}
+
 .input-color {
   padding-left: 1rem;
   position: relative;

@@ -144,14 +144,16 @@ Page({
   //输入内容
   setText: function (event) {
     this.setData({
-      text: event.detail.value
+      text: event.detail.value,
+      preview: 0
     })
   },
 
   //设置字体大小
   setSize: function (event) {
     this.setData({
-      size: event.detail.value
+      size: event.detail.value,
+      preview: 0
     })
   },
 
@@ -165,21 +167,24 @@ Page({
   //设置水印颜色
   setColor: function (event) {
     this.setData({
-      color: event.currentTarget.id
+      color: event.currentTarget.id,
+      preview: 0
     })
   },
 
   //输入水印颜色
   inputColor: function (event) {
     this.setData({
-      color: event.detail.value
+      color: event.detail.value,
+      preview: 0
     })
   },
 
   //设置不透明度
   setAlpha: function (event) {
     this.setData({
-      alpha: event.detail.value
+      alpha: event.detail.value,
+      preview: 0
     })
   },
 
@@ -189,20 +194,23 @@ Page({
       position: event.currentTarget.id,
       positionX: 0,
       positionY: 0,
+      preview: 0
     })
   },
 
   //设置水平边距
   setPositionX: function (event) {
     this.setData({
-      positionX: event.detail.value
+      positionX: event.detail.value,
+      preview: 0
     })
   },
 
   //设置垂直边距
   setPositionY: function (event) {
     this.setData({
-      positionY: event.detail.value
+      positionY: event.detail.value,
+      preview: 0
     })
   },
 
@@ -304,6 +312,29 @@ Page({
     }, 500))
   },
 
+  //设置面板状态
+  setPanelStatus: function (event) {
+    if (this.data.preview == false) {
+      wx.showModal({
+        title: '未生成预览',
+        content: '请您先生成预览后再进行保存',
+        showCancel: false
+      })
+      return
+    }
+    this.setData({
+      panel: event.currentTarget.dataset.status,
+      templateName: ''
+    })
+  },
+
+  //设置模板名称
+  setTemplateName: function (event) {
+    this.setData({
+      templateName: event.detail.value
+    })
+  },
+
   //保存单张图片
   saveImage: function () {
     if (this.data.preview == false) {
@@ -322,16 +353,13 @@ Page({
   //保存模板
   saveTemplate: function () {
     let that = this
-    if (that.data.preview == false) {
-      wx.showModal({
-        title: '未生成预览',
-        content: '请您先生成预览后再进行保存',
-        showCancel: false
-      })
-      return
+    let templateName = '新建模板'
+    if (that.data.templateName != '') {
+      templateName = that.data.templateName
     }
     let template = {
       index: that.data.templates.length,
+      name: that.data.templateName,
       text: that.data.text,
       size: that.data.size,
       colorMode: that.data.colorMode,

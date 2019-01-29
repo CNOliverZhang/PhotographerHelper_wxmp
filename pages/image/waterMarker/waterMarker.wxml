@@ -143,7 +143,7 @@
     </view>
     <view wx:if="{{mode == 'image'}}" class='container row-flex'>
       <view class='half'>
-        <button class='side-button' bindtap='saveTemplate'>
+        <button class='side-button' bindtap='setPanelStatus' data-status='show'>
           <text>保存水印模板</text>
           <view class='button-mask' hover-class='button-mask__hover'></view>
         </button>
@@ -156,7 +156,7 @@
       </view>
     </view>
     <view wx:if="{{mode == 'template'}}" class='container'>
-      <button class='main-button' bindtap='saveTemplate'>
+      <button class='main-button' bindtap='setPanelStatus' data-status='show'>
         <text>保存水印模板</text>
         <view class='button-mask' hover-class='button-mask__hover'></view>
       </button>
@@ -173,6 +173,28 @@
     <view class='half'>
       <button class='main-button' open-type='share'>
         <text>分享</text>
+        <view class='button-mask' hover-class='button-mask__hover'></view>
+      </button>
+    </view>
+  </view>
+</view>
+<view class="panel-holder {{panel != 'show' ? 'panel-hidden' : ''}}">
+  <view class='panel'>
+    <view class='container'>
+      <scroll-view scroll-y='true' class='panel-text-holder'>
+        <view class='subtitle'>
+          <text>设置模板名称</text>
+        </view>
+        <input maxlength='20' class="text {{focused == true ? 'input-focused' : 'input-blurred'}}" placeholder='请输入模板名称' placeholder-class='content input-placeholder' type='text' bindfocus='focus' bindblur='blur' bindinput='setTemplateName'></input>
+      </scroll-view>
+    </view>
+    <view class='container row-flex panel-button-holder'>
+      <button class='side-text-button' bindtap='setPanelStatus' data-status=''>
+        <text>取消</text>
+        <view class='button-mask' hover-class='button-mask__hover'></view>
+      </button>
+      <button class='text-button' bindtap='saveTemplate'>
+        <text>确定</text>
         <view class='button-mask' hover-class='button-mask__hover'></view>
       </button>
     </view>
