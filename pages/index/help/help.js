@@ -1,27 +1,20 @@
 Page({
   
   data: {
-    history: 'panel-holder panel-hidden',
-    momentsImage: 'panel-holder panel-hidden',
-    imageClipper: 'panel-holder panel-hidden',
-    waterMarker: 'panel-holder panel-hidden',
-    depth: 'panel-holder panel-hidden',
-    field: 'panel-holder panel-hidden',
+
   },
 
   //显示面板
   showPanel: function (event) {
-    let target = event.currentTarget.id
     this.setData({
-      [target]: 'panel-holder'
+      show: event.currentTarget.id
     })
   },
 
   //关闭面板
   hidePanel: function (event) {
-    let target = event.currentTarget.id
     this.setData({
-      [target]: 'panel-holder panel-hidden'
+      show: ''
     })
   },
 

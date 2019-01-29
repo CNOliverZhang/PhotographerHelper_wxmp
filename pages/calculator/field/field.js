@@ -8,41 +8,12 @@ Page({
 
   //初始化选项
   onShow: function () {
-    let modeButton = {
-      equivalent: 'side-button',
-      real: 'side-button'
-    }
-    let frameButton = {
-      fullFrame: 'side-button',
-      apsC: 'side-button',
-      apsCanonC: 'side-button',
-      apsCanonH: 'side-button',
-      mft: 'side-button',
-      oneInch: 'side-button'
-    }
-    let inputs = {
-      length: 'input-blurred',
-      horizontal: 'input-blurred',
-      vertical: 'input-blurred',
-      diagonal: 'input-blurred'
-    }
-    this.setData({
-      modeButton: modeButton,
-      frameButton: frameButton,
-      inputs: inputs,
-    })
     this.clearInput()
   },
 
   //设置焦距模式
   setMode: function (event) {
-    let modeButton = this.data.modeButton
-    for (let i in modeButton) {
-      modeButton[i] = 'side-button'
-    }
-    modeButton[event.currentTarget.id] = 'main-button'
     this.setData({
-      modeButton: modeButton,
       mode: event.currentTarget.id
     })
     if (event.currentTarget.id == 'equivalent') {
@@ -55,15 +26,6 @@ Page({
 
   //设置画幅
   setFrame: function (event) {
-    let frameButton = this.data.frameButton
-    for (let i in frameButton) {
-      frameButton[i] = 'side-button'
-    }
-    frameButton[event.currentTarget.id] = 'main-button'
-    this.setData({
-      frameButton: frameButton,
-      frame: event.currentTarget.id
-    })
     let ratio
     switch(event.currentTarget.id) {
       case 'fullFrame':
@@ -87,25 +49,22 @@ Page({
     }
     this.setData({
       ratio: ratio,
+      frame: event.currentTarget.id
     })
     this.clearInput()
   },
 
   //聚焦
-  focus: function (event) {6
-    let inputs = this.data.inputs
-    inputs[event.currentTarget.id] = 'input-focused'
+  focus: function (event) {
     this.setData({
-      inputs: inputs
+      focus: event.currentTarget.id
     })
   },
 
   //失焦
   blur: function (event) {
-    let inputs = this.data.inputs
-    inputs[event.currentTarget.id] = 'input-blurred'
     this.setData({
-      inputs: inputs
+      focus: ''
     })
   },
 
@@ -139,8 +98,8 @@ Page({
   //输入内容
   input: function (event) {
     let length, horizontal, vertical, diagonal
-    //检测是否已选择模式
     let inputedTarget = event.currentTarget.id
+    //检测是否已选择模式
     if (!this.data.mode) {
       this.setData({
         [inputedTarget]: ''
@@ -251,7 +210,7 @@ Page({
     //输入的是对角线视角
     if (inputedTarget == 'diagonal') {
       diagonal = inputedData
-      length = (Math.sqrt(468) / (Math.tan(horizontal * Math.PI / 360) / this.data.ratio)).toFixed(2)
+      length = (Math.sqrt(468) / (Math.tan(diagonal * Math.PI / 360) / this.data.ratio)).toFixed(2)
       horizontal = (Math.atan(18 / (length * this.data.ratio)) * (360 / Math.PI)).toFixed(2)
       vertical = (Math.atan(12 / (length * this.data.ratio)) * (360 / Math.PI)).toFixed(2)
       if (!this.checkInput(length, horizontal, vertical, diagonal)) {

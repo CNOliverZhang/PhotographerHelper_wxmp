@@ -139,7 +139,7 @@
     <view class='button-mask' hover-class='button-mask__hover'></view>
   </button>
 </view>
-<view class='{{history}}'>
+<view class="panel-holder {{show != 'history' ? 'panel-hidden' : ''}}">
   <view class='panel'>
     <view class='container'>
       <scroll-view scroll-y='true' class='panel-text-holder'>
@@ -171,7 +171,7 @@
     </view>
   </view>
 </view>
-<view class='{{momentsImage}}'>
+<view class="panel-holder {{show != 'momentsImage' ? 'panel-hidden' : ''}}">
   <view class='panel'>
     <view class='container'>
       <scroll-view scroll-y='true' class='panel-text-holder'>
@@ -191,7 +191,7 @@
     </view>
   </view>
 </view>
-<view class='{{imageClipper}}'>
+<view class="panel-holder {{show != 'imageClipper' ? 'panel-hidden' : ''}}">
   <view class='panel'>
     <view class='container'>
       <scroll-view scroll-y='true' class='panel-text-holder'>
@@ -211,7 +211,7 @@
     </view>
   </view>
 </view>
-<view class='{{waterMarker}}'>
+<view class="panel-holder {{show != 'waterMarker' ? 'panel-hidden' : ''}}">
   <view class='panel'>
     <view class='container'>
       <scroll-view scroll-y='true' class='panel-text-holder'>
@@ -231,7 +231,7 @@
     </view>
   </view>
 </view>
-<view class='{{depth}}'>
+<view class="panel-holder {{show != 'depth' ? 'panel-hidden' : ''}}">
   <view class='panel'>
     <view class='container'>
       <scroll-view scroll-y='true' class='panel-text-holder'>
@@ -251,7 +251,7 @@
     </view>
   </view>
 </view>
-<view class='{{field}}'>
+<view class="panel-holder {{show != 'field' ? 'panel-hidden' : ''}}">
   <view class='panel'>
     <view class='container'>
       <scroll-view scroll-y='true' class='panel-text-holder'>

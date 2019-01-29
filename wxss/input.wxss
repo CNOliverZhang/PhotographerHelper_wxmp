@@ -23,3 +23,7 @@ input::after {
   border-bottom-width: 3rpx;
   transition: 0.5s;
 }
+
+.input-placeholder {
+  margin: 0;
+}

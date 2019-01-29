@@ -1,11 +1,15 @@
-<view wx:if="{{images.length == 0}}" class='container'>
-  <view class='subtitle'>
-    <text>请选择需要处理的图片</text>
+<view wx:if="{{images.length == 0}}">
+  <view class='container'>
+    <view class='subtitle'>
+      <text>请选择需要处理的图片</text>
+    </view>
   </view>
-  <button class='select' bindtap='upload'>
-    <text>请选择一张或多张图片</text>
-    <view class='button-mask' hover-class='button-mask__hover'></view>
-  </button>
+  <view class='container'>
+    <button class='upload-button' bindtap='upload'>
+      <text>请选择一张或多张图片</text>
+      <view class='button-mask' hover-class='button-mask__hover'></view>
+    </button>
+  </view>
 </view>
 <view wx:if="{{images.length > 0}}">
   <view class='container'>

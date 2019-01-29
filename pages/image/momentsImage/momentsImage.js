@@ -19,11 +19,7 @@ Page({
 
   //隐藏页面重置图片列表
   onHide: function () {
-    this.setData({
-      images: [],
-      width: 100,
-      height: 100
-    })
+    this.onLoad({})
   },
 
   //获取图片信息
@@ -58,9 +54,7 @@ Page({
                   })
                   that.process()
                 } else {
-                  that.setData({
-                    images: []
-                  })
+                  that.onLoad({})
                 }
               }
             })
@@ -89,9 +83,7 @@ Page({
         that.getInfo(that, images, paths, 0)
       },
       fail: function(res) {
-        that.setData({
-          images: []
-        })
+        that.onLoad()
         wx.showToast({
           title: '上传失败',
           icon: 'none'
@@ -221,7 +213,7 @@ Page({
   onShareAppMessage: function () {
     return {
       title: '朋友圈高清图片生成器-洋芋田摄影小助手',
-      imageUrl: '/images/share/momentsImage.jpg'
+      imageUrl: '/images/share/moments.jpg'
     }
   }
 })

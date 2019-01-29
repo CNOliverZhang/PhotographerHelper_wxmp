@@ -1,2 +1,181 @@
-<!--pages/image/waterMarker/waterMarker.wxml-->
-<text>pages/image/waterMarker/waterMarker.wxml</text>
+<view class="tab-holder">
+    <view class="tab {{currentTab == 'single' ? 'tab-active' : ''}}" bindtap="tapTab" id='single'>添加水印</view>
+    <view class="tab {{currentTab == 'multiple' ? 'tab-active' : ''}}" bindtap="tapTab" id='multiple'>批量加水印</view>
+    <view class="tab {{currentTab == 'templates' ? 'tab-active' : ''}}" bindtap="tapTab" id='templates'>水印模板</view>
+</view>
+<view wx:if="{{currentTab == 'single'}}" class='holder'>
+  <view wx:if="{{mode == 'default'}}">
+    <view class='container'>
+      <view class='subtitle'>
+        <text>请选择需要添加水印的图片</text>
+      </view>
+    </view>
+    <view class='container'>
+      <button class='upload-button' bindtap='singleUpload'>
+        <text>点击这里选择图片</text>
+        <view class='button-mask' hover-class='button-mask__hover'></view>
+      </button>
+    </view>
+    <view class='container'>
+      <button class='main-button' bindtap='createTemplate'>
+        <text>我想创建水印模板</text>
+        <view class='button-mask' hover-class='button-mask__hover'></view>
+      </button>
+    </view>
+  </view>
+  <view wx:if="{{mode == 'template' || mode == 'image'}}">
+    <view class='container'>
+      <view class='subtitle'>
+        <text>水印内容</text>
+      </view>
+      <input maxlength='50' class="text {{focused == true ? 'input-focused' : 'input-blurred'}}" placeholder='请在此输入水印文字' placeholder-class='content input-placeholder' type='text' bindfocus='focus' bindblur='blur' bindinput='setText'></input>
+    </view>
+    <view class='container'>
+      <view class='subtitle'>
+        <text>字体大小</text>
+      </view>
+      <view class='content'>
+        <text>请设置字体尺寸占图片宽度的百分比</text>
+      </view>
+      <slider min='1' max='20' backgroundColor='#e1e1e1' activeColor='#fbbc05' bindchanging='setSize' bindchange='setSize'></slider>
+      <view class='subcontent'>
+        <text>当前设置的字体大小为图片宽度的 {{size}}%</text>
+      </view>
+    </view>
+    <view class='container'>
+      <view class='subtitle'>
+        <text>水印颜色</text>
+      </view>
+    </view>
+    <view class='container row-flex'>
+      <view class='half'>
+        <button class="select-button {{colorMode == 'select' ? 'main-button' : 'side-button'}}" bindtap='setColorMode' id='select'>选择颜色</button>
+      </view>
+      <view class='half'>
+        <button class="select-button {{colorMode == 'input' ? 'main-button' : 'side-button'}}" bindtap='setColorMode' id='input'>输入颜色代码</button>
+      </view>
+    </view>
+    <scroll-view wx:if="{{colorMode == 'select'}}" scroll-x='true' class='scroll-button-set-holder'>
+      <view class='scroll-button-set'>
+        <button class="scroll-button select-button {{color == '000000' ? 'main-button' : 'side-button'}}" bindtap='setColor' id='000000'>黑色</button>
+        <button class="scroll-button select-button {{color == 'ffffff' ? 'main-button' : 'side-button'}}" bindtap='setColor' id='ffffff'>白色</button>
+        <button class="scroll-button select-button {{color == '888888' ? 'main-button' : 'side-button'}}" bindtap='setColor' id='888888'>深灰</button>
+        <button class="scroll-button select-button {{color == '66ccff' ? 'main-button' : 'side-button'}}" bindtap='setColor' id='66ccff'>天蓝</button>
+        <button class="scroll-button select-button {{color == 'ea4c89' ? 'main-button' : 'side-button'}}" bindtap='setColor' id='ea4c89'>洋红</button>
+        <button class="scroll-button select-button {{color == '34a853' ? 'main-button' : 'side-button'}}" bindtap='setColor' id='34a853'>柠绿</button>
+        <button class="scroll-button select-button {{color == 'fbbc05' ? 'main-button' : 'side-button'}}" bindtap='setColor' id='fbbc05'>金黄</button>
+      </view>
+    </scroll-view>
+    <view wx:if="{{colorMode == 'input'}}" class='container'>
+      <input maxlength='6' value='{{color}}' class="text input-color {{focused == true ? 'input-focused' : 'input-blurred'}}" placeholder='请在此输入十六进制颜色代码' placeholder-class='content input-placeholder' type='text' bindfocus='focus' bindblur='blur' bindinput='inputColor'></input>
+    </view>
+    <view class='container'>
+      <view class='subtitle'>
+        <text>不透明度</text>
+      </view>
+      <view class='content'>
+        <text>数值越低越透明，100为完全不透明</text>
+      </view>
+      <slider min='0' max='100' value='100' backgroundColor='#e1e1e1' activeColor='#fbbc05' bindchanging='setAlpha' bindchange='setAlpha'></slider>
+      <view class='subcontent'>
+        <text>当前设置的不透明度为 {{alpha}}%</text>
+      </view>
+    </view>
+    <view class='container'>
+      <view class='subtitle'>
+        <text>相对位置</text>
+      </view>
+      <view class='content'>
+        <text>请设置水印定位方式</text>
+      </view>
+    </view>
+    <scroll-view scroll-x='true' class='scroll-button-set-holder'>
+      <view class='scroll-button-set'>
+        <button class="scroll-button select-button {{position == 'center' ? 'main-button' : 'side-button'}}" bindtap='setPosition' id='center'>中心</button>
+        <button class="scroll-button select-button {{position == 'bottom' ? 'main-button' : 'side-button'}}" bindtap='setPosition' id='bottom'>底部</button>
+        <button class="scroll-button select-button {{position == 'top' ? 'main-button' : 'side-button'}}" bindtap='setPosition' id='top'>顶部</button>
+        <button class="scroll-button select-button {{position == 'bottom-left' ? 'main-button' : 'side-button'}}" bindtap='setPosition' id='bottom-left'>左下角</button>
+        <button class="scroll-button select-button {{position == 'bottom-right' ? 'main-button' : 'side-button'}}" bindtap='setPosition' id='bottom-right'>右下角</button>
+        <button class="scroll-button select-button {{position == 'top-left' ? 'main-button' : 'side-button'}}" bindtap='setPosition' id='top-left'>左上角</button>
+        <button class="scroll-button select-button {{position == 'top-right' ? 'main-button' : 'side-button'}}" bindtap='setPosition' id='top-right'>右上角</button>
+      </view>
+    </scroll-view>
+    <view wx:if="{{position && position != 'center' && position != 'bottom' && position != 'top'}}" class='container'>
+      <view class='content'>
+        <text>请设置水印水平方向的边距占图片宽度的百分比</text>
+      </view>
+      <slider min='0' max='100' backgroundColor='#e1e1e1' activeColor='#fbbc05' bindchanging='setPositionX' bindchange='setPositionX'></slider>
+      <view class='subcontent'>
+        <text>当前设置的水平边距为图片宽度的 {{positionX}}%</text>
+      </view>
+    </view>
+    <view wx:if="{{position && position != 'center'}}" class='container'>
+      <view class='content'>
+        <text>请设置水印垂直方向的边距占图片宽度的百分比</text>
+      </view>
+      <slider min='0' max='100' backgroundColor='#e1e1e1' activeColor='#fbbc05' bindchanging='setPositionY' bindchange='setPositionY'></slider>
+      <view class='subcontent'>
+        <text>当前设置的垂直边距为图片宽度的 {{positionY}}%</text>
+      </view>
+    </view>
+    <view class='container subseparator'></view>
+    <view class='container row-flex'>
+      <view class='half'>
+        <button class='side-button' bindtap='onHide'>
+          <text>返回选择模式</text>
+          <view class='button-mask' hover-class='button-mask__hover'></view>
+        </button>
+      </view>
+      <view class='half'>
+        <button class='main-button' bindtap='preview'>
+          <text>预览水印效果</text>
+          <view class='button-mask' hover-class='button-mask__hover'></view>
+        </button>
+      </view>
+    </view>
+    <view class='container'>
+      <view class='subtitle'>
+        <text>水印预览</text>
+      </view>
+    </view>
+    <view class='container'>
+      <image mode='widthFix' src='{{image}}' class="image {{preview == false ? 'image-waiting' : ''}}">等待生成预览图片</image>
+    </view>
+    <view wx:if="{{mode == 'image'}}" class='container row-flex'>
+      <view class='half'>
+        <button class='side-button' bindtap='saveTemplate'>
+          <text>保存水印模板</text>
+          <view class='button-mask' hover-class='button-mask__hover'></view>
+        </button>
+      </view>
+      <view class='half'>
+        <button class='main-button' bindtap='saveImage'>
+          <text>保存图片</text>
+          <view class='button-mask' hover-class='button-mask__hover'></view>
+        </button>
+      </view>
+    </view>
+    <view wx:if="{{mode == 'template'}}" class='container'>
+      <button class='main-button' bindtap='saveTemplate'>
+        <text>保存水印模板</text>
+        <view class='button-mask' hover-class='button-mask__hover'></view>
+      </button>
+    </view>
+  </view>
+  <view class='separator'></view>
+  <view class='container row-flex'>
+    <view class='half'>
+      <button class='side-button' bindtap='goBack'>
+        <text>返回</text>
+        <view class='button-mask' hover-class='button-mask__hover'></view>
+      </button>
+    </view>
+    <view class='half'>
+      <button class='main-button' open-type='share'>
+        <text>分享</text>
+        <view class='button-mask' hover-class='button-mask__hover'></view>
+      </button>
+    </view>
+  </view>
+</view>
+<canvas canvas-id='image' class='canvas' style="width: {{width}}px; height: {{height}}px"></canvas>

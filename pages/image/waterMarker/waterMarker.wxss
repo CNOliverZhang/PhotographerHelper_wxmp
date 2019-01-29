@@ -1,1 +1,97 @@
-/* pages/image/waterMarker/waterMarker.wxss */
+.tab-holder {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  border-bottom: 4rpx solid #e1e1e1;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  background-color: #ffffff;
+  z-index: 20;
+}
+
+.tab {
+  color: #888888;
+  font-size: 32rpx;
+  text-align: center;
+  line-height: 80rpx;
+  height: 80rpx;
+  width: 1px;
+  flex-grow: 1;
+}
+
+.tab-active {
+  color: #fbbc05;
+  border-bottom-style: solid;
+  border-bottom-color: #fbbc05;
+  border-bottom-width: 10rpx;
+}
+
+.holder {
+  padding-top: 94rpx;
+}
+
+.subtitle {
+  color: #fbbc05;
+}
+
+.main-button {
+  background-color: #fbbc05;
+}
+
+.side-button {
+  color: #fbbc05;
+}
+
+.input-color {
+  padding-left: 1rem;
+  position: relative;
+}
+
+.input-color::before {
+  content: '#';
+  position: absolute;
+  left: 0;
+  line-height: 1.4rem;
+  color: #888888;
+  font-size: 32rpx;
+}
+
+.canvas {
+  position: fixed;
+  top: 9999px;
+}
+
+.image {
+  width: 100%;
+}
+
+.image-waiting {
+  position: relative;
+}
+
+.image-waiting::before {
+  content: '';
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background-color: #000000;
+  opacity: 0.8;
+}
+
+.image-waiting::after {
+  content: '等待生成预览';
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  font-size: 32rpx;
+}

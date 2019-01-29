@@ -1,7 +1,3 @@
-.placeholder {
-  margin: 0;
-}
-
 .subtitle {
   color: #fbbc05;
 }
