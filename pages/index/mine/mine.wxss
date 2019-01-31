@@ -1,1 +1,3 @@
-/* pages/index/mine/mine.wxss */
+.watermark {
+  background-color: #fbbc05;
+}

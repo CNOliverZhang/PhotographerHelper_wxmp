@@ -1,2 +1,23 @@
-<!--pages/index/mine/mine.wxml-->
-<text>pages/index/mine/mine.wxml</text>
+<view class='container'>
+  <view class='subtitle'>
+    <text>我的数据</text>
+  </view>
+</view>
+<view class='container'>
+  <view class='tile-holder'>
+    <button class='tile watermark' bindtap='waterMarker'>
+      <image mode='aspectFit' src='/images/tile/watermark.png'></image>
+      <text>水印模板</text>
+      <view class='button-mask' hover-class='button-mask__hover'></view>
+    </button>
+    <view class='tile empty-tile'></view>
+    <view class='tile empty-tile'></view>
+  </view>
+</view>
+<view class='separator'></view>
+<view class='container'>
+  <button class='side-button' bindtap='goBack'>
+    <text>返回</text>
+    <view class='button-mask' hover-class='button-mask__hover'></view>
+  </button>
+</view>

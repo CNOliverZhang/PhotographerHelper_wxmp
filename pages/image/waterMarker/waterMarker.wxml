@@ -1,9 +1,9 @@
 <view class="tab-holder">
-    <view class="tab {{currentTab == 'single' ? 'tab-active' : ''}}" bindtap="tapTab" id='single'>添加水印</view>
-    <view class="tab {{currentTab == 'multiple' ? 'tab-active' : ''}}" bindtap="tapTab" id='multiple'>批量加水印</view>
-    <view class="tab {{currentTab == 'templates' ? 'tab-active' : ''}}" bindtap="tapTab" id='templates'>水印模板</view>
+  <view class="tab {{currentTab == 'single' ? 'tab-active' : ''}}" bindtap="tapTab" id='single'>添加水印</view>
+  <view class="tab {{currentTab == 'multiple' ? 'tab-active' : ''}}" bindtap="tapTab" id='multiple'>批量加水印</view>
+  <view class="tab {{currentTab == 'templates' ? 'tab-active' : ''}}" bindtap="tapTab" id='templates'>水印模板</view>
 </view>
-<view wx:if="{{currentTab == 'single'}}" class='holder'>
+<view wx:if="{{currentTab == 'single'}}" class='page-holder'>
   <view wx:if="{{mode == 'default'}}">
     <view class='container'>
       <view class='subtitle'>
@@ -18,7 +18,7 @@
     </view>
     <view class='container'>
       <button class='main-button' bindtap='createTemplate'>
-        <text>我想创建水印模板</text>
+        <text>我只需要创建水印模板</text>
         <view class='button-mask' hover-class='button-mask__hover'></view>
       </button>
     </view>
@@ -28,7 +28,7 @@
       <view class='subtitle'>
         <text>水印内容</text>
       </view>
-      <input maxlength='50' class="text {{focused == true ? 'input-focused' : 'input-blurred'}}" placeholder='请在此输入水印文字' placeholder-class='content input-placeholder' type='text' bindfocus='focus' bindblur='blur' bindinput='setText'></input>
+      <input value='{{text}}' maxlength='50' class="text {{focused == 'setText' ? 'input-focused' : 'input-blurred'}}" placeholder='请在此输入水印文字' placeholder-class='content input-placeholder' type='text' bindfocus='focus' bindblur='blur' bindinput='setText' id='setText'></input>
     </view>
     <view class='container'>
       <view class='subtitle'>
@@ -37,7 +37,7 @@
       <view class='content'>
         <text>请设置字体尺寸占图片宽度的百分比</text>
       </view>
-      <slider min='1' max='20' backgroundColor='#e1e1e1' activeColor='#fbbc05' bindchanging='setSize' bindchange='setSize'></slider>
+      <slider value='size' min='1' max='20' backgroundColor='#e1e1e1' activeColor='#fbbc05' bindchanging='setSize' bindchange='setSize'></slider>
       <view class='subcontent'>
         <text>当前设置的字体大小为图片宽度的 {{size}}%</text>
       </view>
@@ -67,16 +67,19 @@
       </view>
     </scroll-view>
     <view wx:if="{{colorMode == 'input'}}" class='container'>
-      <input maxlength='6' value='{{color}}' class="text input-color {{focused == true ? 'input-focused' : 'input-blurred'}}" placeholder='请在此输入十六进制颜色代码' placeholder-class='content input-placeholder' type='text' bindfocus='focus' bindblur='blur' bindinput='inputColor'></input>
+      <input value='{{color}}' maxlength='6' class="text input-color {{focused == true ? 'input-focused' : 'input-blurred'}}" placeholder='请在此输入十六进制颜色代码' placeholder-class='content input-placeholder' type='text' bindfocus='focus' bindblur='blur' bindinput='inputColor'></input>
+      <view class='content'>
+        <text>形式为“#000000”，不需要输入“#”</text>
+      </view>
     </view>
     <view class='container'>
       <view class='subtitle'>
         <text>不透明度</text>
       </view>
       <view class='content'>
-        <text>数值越低越透明，100为完全不透明</text>
+        <text>数值越低越透明，100%为完全不透明</text>
       </view>
-      <slider min='0' max='100' value='100' backgroundColor='#e1e1e1' activeColor='#fbbc05' bindchanging='setAlpha' bindchange='setAlpha'></slider>
+      <slider value='{{alpha}}' min='0' max='100' backgroundColor='#e1e1e1' activeColor='#fbbc05' bindchanging='setAlpha' bindchange='setAlpha'></slider>
       <view class='subcontent'>
         <text>当前设置的不透明度为 {{alpha}}%</text>
       </view>
@@ -104,7 +107,7 @@
       <view class='content'>
         <text>请设置水印水平方向的边距占图片宽度的百分比</text>
       </view>
-      <slider min='0' max='100' backgroundColor='#e1e1e1' activeColor='#fbbc05' bindchanging='setPositionX' bindchange='setPositionX'></slider>
+      <slider value='{{positionX}}' min='0' max='100' backgroundColor='#e1e1e1' activeColor='#fbbc05' bindchanging='setPositionX' bindchange='setPositionX'></slider>
       <view class='subcontent'>
         <text>当前设置的水平边距为图片宽度的 {{positionX}}%</text>
       </view>
@@ -113,15 +116,27 @@
       <view class='content'>
         <text>请设置水印垂直方向的边距占图片宽度的百分比</text>
       </view>
-      <slider min='0' max='100' backgroundColor='#e1e1e1' activeColor='#fbbc05' bindchanging='setPositionY' bindchange='setPositionY'></slider>
+      <slider value='positionY' min='0' max='100' backgroundColor='#e1e1e1' activeColor='#fbbc05' bindchanging='setPositionY' bindchange='setPositionY'></slider>
       <view class='subcontent'>
         <text>当前设置的垂直边距为图片宽度的 {{positionY}}%</text>
+      </view>
+    </view>
+    <view wx:if="{{mode == 'image'}}" class='container'>
+      <view class='subtitle'>
+        <text>压缩选项</text>
+      </view>
+      <view class='content'>
+        <text>是否开启压缩模式</text>
+      </view>
+      <switch checked='{{singleCompress}}' color='#fbbc05' bindchange='setCompress' data-compress='singleCompress'></switch>
+      <view class='subcontent'>
+        <text>如果您在处理大尺寸图片时发生闪退，请开启压缩</text>
       </view>
     </view>
     <view class='container subseparator'></view>
     <view class='container row-flex'>
       <view class='half'>
-        <button class='side-button' bindtap='onHide'>
+        <button class='side-button' bindtap='clearData'>
           <text>返回选择模式</text>
           <view class='button-mask' hover-class='button-mask__hover'></view>
         </button>
@@ -185,7 +200,7 @@
         <view class='subtitle'>
           <text>设置模板名称</text>
         </view>
-        <input maxlength='20' class="text {{focused == true ? 'input-focused' : 'input-blurred'}}" placeholder='请输入模板名称' placeholder-class='content input-placeholder' type='text' bindfocus='focus' bindblur='blur' bindinput='setTemplateName'></input>
+        <input maxlength='15' value='{{templateName}}' class="text {{focused == 'setTemplateName' ? 'input-focused' : 'input-blurred'}}" placeholder='请输入模板名称' placeholder-class='content input-placeholder' type='text' bindfocus='focus' bindblur='blur' bindinput='setTemplateName' id='setTemplateName'></input>
       </scroll-view>
     </view>
     <view class='container row-flex panel-button-holder'>
@@ -195,6 +210,208 @@
       </button>
       <button class='text-button' bindtap='saveTemplate'>
         <text>确定</text>
+        <view class='button-mask' hover-class='button-mask__hover'></view>
+      </button>
+    </view>
+  </view>
+</view>
+<view wx:if="{{currentTab == 'multiple'}}" class='page-holder'>
+  <view wx:if="{{multipleStatus == 'default'}}">
+    <view class='container'>
+      <view class='subtitle'>
+        <text>请选择需要添加水印的图片</text>
+      </view>
+    </view>
+    <view class='container'>
+      <button class='upload-button' bindtap='multipleUpload'>
+        <text>点击这里选择图片</text>
+        <view class='button-mask' hover-class='button-mask__hover'></view>
+      </button>
+    </view>
+    <view class='container'>
+      <view class='subtitle'>
+        <text>压缩选项</text>
+      </view>
+      <view class='content'>
+        <text>是否开启压缩模式</text>
+      </view>
+      <switch checked='{{multipleCompress}}' color='#fbbc05' bindchange='setCompress' data-compress='multipleCompress'></switch>
+      <view class='subcontent'>
+        <text>如果您在处理大尺寸图片时发生闪退，请开启压缩</text>
+      </view>
+    </view>
+  </view>
+  <view wx:if="{{multipleStatus == 'uploaded'}}">
+    <view class='container'>
+      <view class='subtitle'>
+        <text>请选择需要使用的水印模板</text>
+      </view>
+    </view>
+    <view wx:for="{{templates}}" wx:key="{{index}}">
+      <view class='container'>
+        <button class='block-button' bindtap='selectTemplate' data-template-index='{{index}}'>
+          <view class='container'>
+            <view class='content info-title'>
+              <text>{{item.name}}</text>
+            </view>
+            <view class='info-content'>
+              <view class='subcontent info-title one-third'>
+                <text>水印文本 </text>
+              </view>
+              <view class='subcontent'>
+                <text>{{item.text}}</text>
+              </view>
+            </view>
+          </view>
+          <view class='button-mask' hover-class='button-mask__hover'></view>
+        </button>
+      </view>
+    </view>
+    <view class='container'>
+      <button class='side-button' bindtap='clearData'>
+        <text>返回重新选择图片</text>
+        <view class='button-mask' hover-class='button-mask__hover'></view>
+      </button>
+    </view>
+  </view>
+  <view wx:if="{{multipleStatus == 'done'}}">
+    <view class='container'>
+      <view class='subtitle'>
+        <text>保存图片</text>
+      </view>
+    </view>
+    <view class='container'>
+      <view class='content'>
+        <text>点击下方的图片预览以保存对应图片，或点击底部的按钮保存全部图片</text>
+      </view>
+    </view>
+    <view wx:for="{{images}}" wx:key="{{i}}">
+      <view class='container'>
+        <button class='block-button' bindtap='saveSingleImage' data-image-index='{{index}}'>
+          <view class='row-flex info-holder'>
+            <image class='info-image' mode='aspectFill' src='{{item.path}}'></image>
+            <view class='info-text-holder'>
+              <view class='subcontent info-text'>
+                <view class='info-attribute'>
+                  <text>原始尺寸</text>
+                </view>
+                <view class='value'>
+                  <text>{{item.originalWidth}}px × {{item.originalHeight}}px</text>
+                </view>
+              </view>
+              <view class='subcontent info-text'>
+                <view class='info-attribute'>
+                  <text>处理后尺寸</text>
+                </view>
+                <view class='value'>
+                  <text>{{item.width}}px × {{item.height}}px</text>
+                </view>
+              </view>
+            </view>
+          </view>
+          <view class='button-mask' hover-class='button-mask__hover'></view>
+        </button>
+      </view>
+    </view>
+    <view class='container row-flex'>
+      <view class='half'>
+        <button class='side-button' bindtap='clearData'>
+          <text>重新选择图片</text>
+          <view class='button-mask' hover-class='button-mask__hover'></view>
+        </button>
+      </view>
+      <view class='half'>
+        <button class='main-button' bindtap='saveMultipleImages'>
+          <text>全部保存</text>
+          <view class='button-mask' hover-class='button-mask__hover'></view>
+        </button>
+      </view>
+    </view>
+  </view>
+  <view class='separator'></view>
+  <view class='container row-flex'>
+    <view class='half'>
+      <button class='side-button' bindtap='goBack'>
+        <text>返回</text>
+        <view class='button-mask' hover-class='button-mask__hover'></view>
+      </button>
+    </view>
+    <view class='half'>
+      <button class='main-button' open-type='share'>
+        <text>分享</text>
+        <view class='button-mask' hover-class='button-mask__hover'></view>
+      </button>
+    </view>
+  </view>
+</view>
+<view wx:if="{{currentTab == 'templates'}}" class='page-holder'>
+  <view wx:if="{{templates.length != 0}}">
+    <view class='container'>
+      <view class='subtitle'>
+        <text>已保存的水印模板</text>
+      </view>
+    </view>
+    <view class='container'>
+      <view class='content'>
+        <text>点击以使用模板处理单张图片或修改模板，长按以删除模板</text>
+      </view>
+    </view>
+    <view wx:for="{{templates}}" wx:key="{{index}}">
+      <view class='container'>
+        <button class='block-button' bindtap='useTemplate' bindlongpress='deleteTemplate' data-template-index='{{index}}'>
+          <view class='container'>
+            <view class='content info-title'>
+              <text>{{item.name}}</text>
+            </view>
+            <view class='info-content'>
+              <view class='subcontent info-title one-forth'>
+                <text>水印文本 </text>
+              </view>
+              <view class='subcontent three-forths'>
+                <text>{{item.text}}</text>
+              </view>
+            </view>
+          </view>
+          <view class='button-mask' hover-class='button-mask__hover'></view>
+        </button>
+      </view>
+    </view>
+    <view class='container'>
+      <button class='side-button' bindtap='deleteAllTemplates'>
+        <text>删除全部水印模板</text>
+        <view class='button-mask' hover-class='button-mask__hover'></view>
+      </button>
+    </view>
+  </view>
+  <view wx:if="{{templates.length == 0}}">
+    <view class='container'>
+      <view class='subtitle'>
+        <text>尚无已保存的水印模板</text>
+      </view>
+    </view>
+    <view class='container'>
+      <view class='content'>
+        <text>请点击点击下方的按钮创建水印模板</text>
+      </view>
+    </view>
+    <view class='container'>
+      <button class='main-button' bindtap='noTemplate'>
+        <text>创建水印模板</text>
+        <view class='button-mask' hover-class='button-mask__hover'></view>
+      </button>
+    </view>
+  </view>
+  <view class='separator'></view>
+  <view class='container row-flex'>
+    <view class='half'>
+      <button class='side-button' bindtap='goBack'>
+        <text>返回</text>
+        <view class='button-mask' hover-class='button-mask__hover'></view>
+      </button>
+    </view>
+    <view class='half'>
+      <button class='main-button' open-type='share'>
+        <text>分享</text>
         <view class='button-mask' hover-class='button-mask__hover'></view>
       </button>
     </view>

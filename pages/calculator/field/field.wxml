@@ -1,6 +1,6 @@
 <view class='container'>
   <view class='subtitle'>
-    <text>选择焦距模式</text>
+    <text>请选择焦距模式</text>
   </view>
 </view>
 <view class='container row-flex'>
@@ -14,7 +14,7 @@
 <view wx:if="{{mode == 'real'}}">
   <view class='container'>
     <view class='subtitle'>
-      <text>选择相机画幅</text>
+      <text>请选择相机画幅</text>
     </view>
   </view>
   <scroll-view scroll-x='true' class='scroll-button-set-holder'>

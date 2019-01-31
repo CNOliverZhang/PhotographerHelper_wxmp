@@ -10,35 +10,30 @@
   color: #34a853;
 }
 
-.holder {
+.info-holder {
   width: 100%;
   height: 100%;
   justify-content: flex-start
 }
 
-.preview {
+.info-image {
   width: 30vw;
   height: 100%;
   background-color: #000000;
 }
 
-.info-panel {
+.info-text-holder {
   flex-grow: 1;
 }
 
-.text-holder {
+.info-text {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   flex-grow: 1;
 }
 
-.image {
-  position: fixed;
-  top: 9999px;
-}
-
-.attribute {
+.info-attribute {
   text-align: left;
   color: #34a853;
   width: 30%;
@@ -46,7 +41,12 @@
   margin-right: 30rpx;
 }
 
-.value {
+.info-value {
   text-align: left;
   width: 70%;
+}
+
+.image {
+  position: fixed;
+  top: 9999px;
 }

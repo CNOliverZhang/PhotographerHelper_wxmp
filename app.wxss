@@ -5,4 +5,5 @@
 @import 'wxss/tile.wxss';
 @import 'wxss/panel.wxss';
 @import 'wxss/separator.wxss';
-@import 'wxss/input.wxss'
+@import 'wxss/input.wxss';
+@import 'wxss/tab.wxss'

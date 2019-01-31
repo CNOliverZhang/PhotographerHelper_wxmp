@@ -23,32 +23,32 @@
   <view wx:for="{{images}}" wx:key="{{i}}">
     <view class='container'>
       <button class='block-button' bindtap='save' id='{{index}}'>
-        <view class='row-flex holder'>
-          <image class='preview' mode='aspectFill' src='{{item.path}}'></image>
-          <view wx:if="{{item.handled == false}}" class='info-panel'>
-            <view class='subcontent text-holder'>
-              <view class='attribute'>
+        <view class='row-flex info-holder'>
+          <image class='info-image' mode='aspectFill' src='{{item.path}}'></image>
+          <view wx:if="{{item.handled == false}}" class='info-text-holder'>
+            <view class='subcontent info-text'>
+              <view class='info-attribute'>
                 <text>原始尺寸</text>
               </view>
-              <view class='value'>
+              <view class='info-value'>
                 <text>{{item.width}}px × {{item.height}}px</text>
               </view>
             </view>
           </view>
-          <view wx:if="{{item.handled == true}}" class='info-panel'>
-            <view class='subcontent text-holder'>
-              <view class='attribute'>
+          <view wx:if="{{item.handled == true}}" class='info-text-holder'>
+            <view class='subcontent info-text'>
+              <view class='info-attribute'>
                 <text>原始尺寸</text>
               </view>
-              <view class='value'>
+              <view class='info-value'>
                 <text>{{item.originalWidth}}px × {{item.originalHeight}}px</text>
               </view>
             </view>
-            <view class='subcontent text-holder'>
-              <view class='attribute'>
+            <view class='subcontent info-text'>
+              <view class='info-attribute'>
                 <text>处理后尺寸</text>
               </view>
-              <view class='value'>
+              <view class='info-value'>
                 <text>{{item.width}}px × {{item.height}}px</text>
               </view>
             </view>

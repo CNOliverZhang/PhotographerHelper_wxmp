@@ -155,6 +155,7 @@ Page({
         wx.showModal({
           title: '输入错误',
           content: '您输入的值存在错误，请您重新输入。',
+          showCancel: false
         })
         return
       }
@@ -176,6 +177,7 @@ Page({
         wx.showModal({
           title: '输入错误',
           content: '您输入的值存在错误，请您重新输入。',
+          showCancel: false
         })
         return
       }
@@ -240,7 +242,7 @@ Page({
   //分享
   onShareAppMessage: function () {
     return {
-      title: '焦距视角换算工具-洋芋田摄影小助手',
+      title: '焦距视角换算工具 - 洋芋田摄影小助手',
       imageUrl: '/images/share/field.jpg'
     }
   }

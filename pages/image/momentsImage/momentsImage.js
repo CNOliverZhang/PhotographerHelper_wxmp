@@ -17,11 +17,6 @@ Page({
     })
   },
 
-  //隐藏页面重置图片列表
-  onHide: function () {
-    this.onLoad({})
-  },
-
   //获取图片信息
   getInfo: function (that, images, paths, i) {
     wx.getImageInfo({
@@ -41,8 +36,9 @@ Page({
           that.setData({
             images: images
           }, function () {
+            wx.hideToast()
             wx.showModal({
-              title: '图片上传成功',
+              title: '图片读取成功',
               content: '点击“确定”开始处理图片，或点击“取消”返回重新选择图片。',
               success: function (res) {
                 if (res.confirm) {
@@ -52,7 +48,7 @@ Page({
                     mask: true,
                     duration: 900000
                   })
-                  that.process()
+                  that.handle(0, that, images)
                 } else {
                   that.onLoad({})
                 }
@@ -85,14 +81,14 @@ Page({
       fail: function(res) {
         that.onLoad()
         wx.showToast({
-          title: '上传失败',
+          title: '读取失败',
           icon: 'none'
         })
       }
     })
   },
 
-  //处理单张图片
+  //递归处理图片
   handle: function (i, that, images) {
     let width = images[i].width
     let height = images[i].height
@@ -138,7 +134,7 @@ Page({
                 wx.hideToast()
                 wx.showModal({
                   title: '处理完成',
-                  content: '全部图片已处理完成，请点击“确定”进行下一步',
+                  content: '全部图片已处理完成，请点击“确定”进行下一步。',
                   showCancel: false
                 })
               })
@@ -149,13 +145,6 @@ Page({
     })
   },
 
-  //处理图片列表
-  process: function () {
-    let that = this
-    let images = that.data.images
-    this.handle(0, that, images)
-  },
-
   //保存图片
   save: function (event) {
     let index = event.currentTarget.id
@@ -164,6 +153,12 @@ Page({
       success: function (res) {
         wx.showToast({
           title: '保存成功',
+        })
+      },
+      fail: function () {
+        wx.showToast({
+          title: '保存失败',
+          icon: 'none'
         })
       }
     })
@@ -188,12 +183,12 @@ Page({
             if (failCount == 0) {
               wx.showModal({
                 title: '保存成功',
-                content: '共有' + successCount + '张图片，全部保存成功',
+                content: '共有' + successCount + '张图片，全部保存成功。',
               })
             } else {
               wx.showModal({
                 title: '完成',
-                content: '共有' + this.data.images.length + '张图片，其中' + successCount + '张保存成功，' + failCount + '张保存失败',
+                content: '共有' + that.data.images.length + '张图片，其中' + successCount + '张保存成功，' + failCount + '张保存失败。',
               })
             }
           }
@@ -212,7 +207,7 @@ Page({
   //分享
   onShareAppMessage: function () {
     return {
-      title: '朋友圈高清图片生成器-洋芋田摄影小助手',
+      title: '朋友圈高清图片生成器 - 洋芋田摄影小助手',
       imageUrl: '/images/share/moments.jpg'
     }
   }

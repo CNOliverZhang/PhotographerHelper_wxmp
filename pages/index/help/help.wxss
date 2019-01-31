@@ -1,0 +1,29 @@
+.plan::before {
+  content: '确认加入 ';
+  color: #66ccff;
+}
+
+.evaluate::before {
+  content: '验证可行性 ';
+  color: #66ccff;
+}
+
+.developer::before {
+  content: '开发者 ';
+  color: #66ccff;
+}
+
+.email::before {
+  content: '电子邮件 ';
+  color: #66ccff;
+}
+
+.website::before {
+  content: '网站地址 ';
+  color: #66ccff;
+}
+
+.open::before {
+  content: '开源地址 ';
+  color: #66ccff;
+}

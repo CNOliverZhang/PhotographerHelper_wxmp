@@ -1,0 +1,32 @@
+.tab-holder {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  border-bottom: 4rpx solid #e1e1e1;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  background-color: #ffffff;
+  z-index: 20;
+}
+
+.tab {
+  color: #888888;
+  font-size: 32rpx;
+  text-align: center;
+  line-height: 80rpx;
+  height: 80rpx;
+  width: 1px;
+  flex-grow: 1;
+}
+
+.tab-active {
+  color: #66ccff;
+  border-bottom-style: solid;
+  border-bottom-color: #66ccff;
+  border-bottom-width: 10rpx;
+}
+
+.page-holder {
+  padding-top: 94rpx;
+}

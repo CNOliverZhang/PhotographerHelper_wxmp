@@ -1,2 +1,120 @@
-<!--pages/calculator/depth/depth.wxml-->
-<text>pages/calculator/depth/depth.wxml</text>
+<view class="tab-holder">
+  <view class="tab {{currentTab == 'depth' ? 'tab-active' : ''}}" bindtap="tapTab" data-tab='depth'>景深</view>
+  <view class="tab {{currentTab == 'length' ? 'tab-active' : ''}}" bindtap="tapTab" data-tab='length'>焦距</view>
+  <view class="tab {{currentTab == 'aperture' ? 'tab-active' : ''}}" bindtap="tapTab" data-tab='aperture'>光圈</view>
+  <view class="tab {{currentTab == 'distance' ? 'tab-active' : ''}}" bindtap="tapTab" data-tab='distance'>距离</view>
+</view>
+<view class='page-holder'>
+  <view class='container'>
+    <view class='subtitle'>
+      <text>请选择相机画幅</text>
+    </view>
+  </view>
+  <scroll-view scroll-x='true' class='scroll-button-set-holder'>
+    <view class='scroll-button-set'>
+      <button class="scroll-button select-button {{frame == 'fullFrame' ? 'main-button' : 'side-button'}}" bindtap='setFrame' data-frame='fullFrame'>全画幅</button>
+      <button class="scroll-button select-button {{frame == 'apsC' ? 'main-button' : 'side-button'}}" bindtap='setFrame' data-frame='apsC'>标准APC-C画幅</button>
+      <button class="scroll-button select-button {{frame == 'apsCanonC' ? 'main-button' : 'side-button'}}" bindtap='setFrame' data-frame='apsCanonC'>佳能APC-C画幅</button>
+      <button class="scroll-button select-button {{frame == 'apsCanonH' ? 'main-button' : 'side-button'}}" bindtap='setFrame' data-frame='apsCanonH'>佳能APC-H画幅</button>
+      <button class="scroll-button select-button {{frame == 'mft' ? 'main-button' : 'side-button'}}" bindtap='setFrame' data-frame='mft'>Micro 4/3 画幅</button>
+      <button class="scroll-button select-button {{frame == 'oneInch' ? 'main-button' : 'side-button'}}" bindtap='setFrame' data-frame='oneInch'>一英寸画幅</button>
+    </view>
+  </scroll-view>
+</view>
+<view wx:if="{{currentTab != 'depth'}}">
+  <view class='container'>
+    <view class='subtitle'>
+      <text>请选择输入的景深模式</text>
+    </view>
+  </view>
+  <view class='container row-flex'>
+    <view class='half'>
+      <button class="select-button {{depthMode == 'front' ? 'main-button' : 'side-button'}}" bindtap='setDepthMode' data-depth-mode='front'>前景深</button>
+    </view>
+    <view class='half'>
+      <button class="select-button {{depthMode == 'back' ? 'main-button' : 'side-button'}}" bindtap='setDepthMode' data-depth-mode='back'>后景深</button>
+    </view>
+  </view>
+</view>
+<view class='container'>
+  <view class='subtitle'>
+    <text>请输入参数</text>
+  </view>
+</view>
+<view class='container'>
+  <view wx:if="{{currentTab != 'depth' && depthMode == 'front'}}" class='row-flex'>
+    <view class='one-third content'>
+      <text>前景深</text>
+    </view>
+    <input value='{{depth}}' class="depth {{focus == 'frontDepth' ? 'input-focused' : 'input-blurred'}}" placeholder='请输入前景深' placeholder-class='content input-placeholder' type='digit' bindfocus='focus' bindblur='blur' bindinput='input' data-input='depth'></input>
+  </view>
+  <view wx:if="{{currentTab != 'depth' && depthMode == 'back'}}" class='row-flex'>
+    <view class='one-third content'>
+      <text>后景深</text>
+    </view>
+    <input value='{{depth}}' class="depth {{focus == 'backDepth' ? 'input-focused' : 'input-blurred'}}" placeholder='请输入后景深' placeholder-class='content input-placeholder' type='digit' bindfocus='focus' bindblur='blur' bindinput='input' data-input='depth'></input>
+  </view>
+  <view wx:if="{{currentTab != 'length'}}" class='row-flex'>
+    <view class='one-third content'>
+      <text>焦距</text>
+    </view>
+    <input value='{{length}}' class="length {{focus == 'length' ? 'input-focused' : 'input-blurred'}}" placeholder='请输入焦距' placeholder-class='content input-placeholder' type='digit' bindfocus='focus' bindblur='blur' bindinput='input' data-input='length'></input>
+  </view>
+  <view wx:if="{{currentTab != 'aperture'}}" class='row-flex'>
+    <view class='one-third content'>
+      <text>光圈</text>
+    </view>
+    <input value='{{aperture}}' class="aperture {{focus == 'aperture' ? 'input-focused' : 'input-blurred'}}" placeholder='请输入光圈' placeholder-class='content input-placeholder' type='digit' bindfocus='focus' bindblur='blur' bindinput='input' data-input='aperture'></input>
+  </view>
+  <view wx:if="{{currentTab != 'distance'}}" class='row-flex'>
+    <view class='one-third content'>
+      <text>距离</text>
+    </view>
+    <input value='{{distance}}' class="distance {{focus == 'distance' ? 'input-focused' : 'input-blurred'}}" placeholder='请输入距离' placeholder-class='content input-placeholder' type='digit' bindfocus='focus' bindblur='blur' bindinput='input' data-input='distance'></input>
+  </view>
+</view>
+<view class='container'>
+  <button class='main-button' bindtap='calculate'>
+    <text>计算{{target}}</text>
+    <view class='button-mask' hover-class='button-mask__hover'></view>
+  </button>
+</view>
+<view wx:if="{{results.length != 0}}" >
+  <view class='container'>
+    <view class='subtitle'>
+      <text>计算结果</text>
+    </view>
+  </view>
+  <view class='container results'>
+    <view wx:for="{{results}}" wx:key="*this">
+      <view class='row-flex'>
+        <view class='content result-attribute one-third'>
+          <text>{{item.name}}</text>
+        </view>
+        <view class='content two-thirds'>
+          <text>{{item.value}} {{item.unit}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class='container'>
+    <view class='subcontent'>
+      <text>计算中使用的弥撒圆直径采用蔡司公式估算</text>
+    </view>
+  </view>
+</view>
+<view class='separator'></view>
+<view class='container row-flex'>
+  <view class='half'>
+    <button class='side-button' bindtap='goBack'>
+      <text>返回</text>
+      <view class='button-mask' hover-class='button-mask__hover'></view>
+    </button>
+  </view>
+    <view class='half'>
+    <button class='main-button' open-type='share'>
+      <text>分享</text>
+      <view class='button-mask' hover-class='button-mask__hover'></view>
+    </button>
+  </view>
+</view>

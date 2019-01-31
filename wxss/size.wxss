@@ -7,11 +7,19 @@
 }
 
 .one-third {
-  width: 30%;
+  width: 31%;
+}
+
+.two-thirds {
+  width: 62%;
 }
 
 .full-one-third {
   width: 1/3;
+}
+
+.full-two-thirds {
+  width: 2/3;
 }
 
 .one-forth {
@@ -20,6 +28,14 @@
 
 .full-one-forth {
   width: 25%;
+}
+
+.three-forths {
+  width: 69%;
+}
+
+.full-three-forths {
+  width: 75%;
 }
 
 .full-width {

@@ -1,1 +1,69 @@
-/* pages/calculator/depth/depth.wxss */
+.tab-active {
+  color: #34a853;
+  border-bottom-color: #34a853;
+}
+
+.subtitle {
+  color: #34a853;
+}
+
+.attribute {
+  color: #34a853;
+}
+
+.main-button {
+  background-color: #34a853;
+}
+
+.side-button {
+  color: #34a853;
+}
+
+.text-button {
+  color: #34a853;
+}
+
+.input-focused {
+  border-bottom-color: #34a853;
+}
+
+.depth {
+  padding-right: 2rem;
+}
+
+.length {
+  padding-right: 2rem;
+}
+
+.aperture {
+  padding-right: 2rem;
+}
+
+.distance {
+  padding-right: 2rem;
+}
+
+.depth::after {
+  content: 'cm';
+}
+
+.length::after {
+  content: 'mm';
+}
+
+.distance::after {
+  content: 'cm';
+}
+
+.results {
+  padding-left: 60rpx;
+  padding-right: 60rpx;
+  padding-top: 30rpx;
+  padding-bottom: 30rpx;
+  border-radius: 40rpx;
+  box-shadow: 3rpx 3rpx 5rpx #888888;
+}
+
+.result-attribute {
+  color: #34a853;
+}

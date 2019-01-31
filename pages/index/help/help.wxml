@@ -25,6 +25,7 @@
     </button>
   </view>
 </view>
+<!--
 <view class='container'>
   <view class='subtitle'>
     <text>常用比例裁剪工具</text>
@@ -47,6 +48,7 @@
     </button>
   </view>
 </view>
+-->
 <view class='container'>
   <view class='subtitle'>
     <text>图片自定义加水印工具</text>
@@ -74,7 +76,7 @@
     <text>景深范围计算工具</text>
   </view>
   <view class='content'>
-    <text>您可以使用本模块进行与景深相关的计算，包括跟参数计算景深及根据期望的景深反求所需的参数。另外，根据不同场合的需求，您还可以自行选择简单模式及专家模式。</text>
+    <text>您可以使用本模块进行与景深相关的计算，即根据参数计算景深或根据期望的景深反求所需的参数。可以计算的参数包括前景深，后景深，镜头光圈，镜头焦距以及拍摄对象的距离。</text>
   </view>
 </view>
 <view class='container row-flex'>
@@ -122,7 +124,7 @@
     <text>当前版本</text>
   </view>
   <view class='content'>
-    <text>2019年1月29日 0.7.190129 Beta版</text>
+    <text>2019年1月31日 1.0.190131 正式版</text>
   </view>
   <view class='subtitle'>
     <text>历史版本</text>
@@ -131,6 +133,54 @@
     <text>点击查看历史版本</text>
     <view class='button-mask' hover-class='button-mask__hover'></view>
   </button>
+  <view class='subtitle'>
+    <text>更新计划</text>
+  </view>
+  <view class='content plan'>
+    <text>添加图片常用比例裁剪工具。</text>
+  </view>
+  <view class='content plan'>
+    <text>朋友圈高清图片生成器添加压缩模式，优化稳定性。</text>
+  </view>
+  <view class='content plan'>
+    <text>图片自定义加水印工具压缩模式支持自定义压缩分辨率。</text>
+  </view>
+  <view class='content plan'>
+    <text>景深范围计算工具支持自定义弥散圆大小。</text>
+  </view>
+  <view class='content evaluate'>
+    <text>图片自定义加水印工具允许自定义字体。</text>
+  </view>
+  <view class='content evaluate'>
+    <text>添加相机画幅检索工具。</text>
+  </view>
+</view>
+<view class='subseparator'></view>
+<view class='container'>
+  <view class='title'>
+    <text>关于本程序</text>
+  </view>
+  <view class='subtitle'>
+    <text>开发者信息</text>
+  </view>
+  <view class='content developer'>
+    <text>张志毅</text>
+  </view>
+  <view class='content email'>
+    <text>admin@potatofield.cn</text>
+  </view>
+  <view class='content website'>
+    <text>https://www.potatofield.cn</text>
+  </view>
+  <view class='content open'>
+    <text>https://wxmp.potatofield.cn</text>
+  </view>
+  <view class='subtitle'>
+    <text>协助开发</text>
+  </view>
+  <view class='content'>
+    <text>如果您在使用过程中遇到问题，或愿意为本程序提供建议，欢迎您通过电子邮件与我联系。</text>
+  </view>
 </view>
 <view class='separator'></view>
 <view class='container'>
@@ -145,6 +195,12 @@
       <scroll-view scroll-y='true' class='panel-text-holder'>
         <view class='subtitle'>
           <text>版本历史</text>
+        </view>
+        <view class='content'>
+          <text>2019年1月30日 0.8.190130 Beta版</text>
+        </view>
+        <view class='content'>
+          <text>2019年1月29日 0.7.190129 Beta版</text>
         </view>
         <view class='content'>
           <text>2019年1月28日 0.6.190128 Beta版</text>
@@ -222,7 +278,7 @@
           <text>图片自定义加水印工具</text>
         </view>
         <view class='content'>
-          <text>由于微信小程序纯前端处理的性能限制，如果您选择的照片尺寸过大，添加水印的同时会对图片的尺寸进行缩小。本模块允许的最大尺寸为2400万像素，覆盖了大部分全画幅相机和绝大部分APS-C画幅相机，因此通常情况下您的图片不会被压缩。</text>
+          <text>由于微信小程序纯前端处理的性能限制，如果您选择的照片尺寸过大，可能会造成小程序崩溃。如果您遇到闪退等情况，请您勾选“开启压缩”选项，保证程序正常工作。</text>
         </view>
       </scroll-view>
     </view>
@@ -242,7 +298,7 @@
           <text>景深范围计算工具</text>
         </view>
         <view class='content'>
-          <text>根据参数计算景深时需要输入物距，焦距及光圈三项参数，专家模式下还需选择画幅和弥散圆半径。由景深反求参数时可以根据任意两项参数反推另一项参数。</text>
+          <text>计算时的弥散圆采用蔡司公司制定的标准进行估算，该标准要求人眼在明视距离（30厘米）外观察常用尺寸（7英寸）的照片时不出现模糊，相应的弥散圆直径约为底片（传感器）对角线长度的1/1730。</text>
         </view>
       </scroll-view>
     </view>
