@@ -93,7 +93,12 @@ Page({
     let width = images[i].width
     let height = images[i].height
     let canvasWidth = width
-    let canvasHeight = 2 * width
+    let canvasHeight
+    if (width >= 2 * height || height >= 2 * width) {
+      canvasHeight = height
+    } else {
+      canvasHeight = 2 * width
+    }
     if (canvasHeight >= maxLength) {
       let ratio = maxLength / canvasHeight
       canvasHeight = maxLength
@@ -106,7 +111,7 @@ Page({
       height: canvasHeight
     }, function () {
       let context = wx.createCanvasContext('image')
-      let yPosition = width - height / 2
+      let yPosition = (canvasHeight - height) / 2
       context.drawImage(images[i].path, 0, yPosition, width, height)
       context.draw(false, setTimeout(function () {
         wx.canvasToTempFilePath({

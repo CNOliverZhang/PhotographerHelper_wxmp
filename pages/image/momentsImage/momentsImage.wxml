@@ -12,12 +12,28 @@
   </view>
 </view>
 <view wx:if="{{images.length > 0}}">
-  <view class='container'>
+  <view wx:if="{{images[images.length - 1].handled == false}}" class='container'>
     <view class='subtitle'>
       <text>已选择的图片</text>
     </view>
     <view class='content'>
+      <text>图片读取成功，准备开始处理</text>
+    </view>
+  </view>
+  <view wx:elif="{{images[images.length - 1].handled == true}}" class='container'>
+    <view class='subtitle'>
+      <text>图片处理完成</text>
+    </view>
+    <view class='content'>
       <text>点击下方的图片预览以保存对应图片，或点击底部的按钮保存全部图片</text>
+    </view>
+  </view>
+  <view wx:else class='container'>
+    <view class='subtitle'>
+      <text>图片处理中</text>
+    </view>
+    <view class='content'>
+      <text>正在处理图片，请在处理完成后继续进行操作</text>
     </view>
   </view>
   <view wx:for="{{images}}" wx:key="{{i}}">

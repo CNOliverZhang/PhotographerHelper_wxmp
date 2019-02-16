@@ -8,6 +8,16 @@
   color: #66ccff;
 }
 
+.fixed::before {
+  content: '修复 ';
+  color: #66ccff;
+}
+
+.enhanced::before {
+  content: '优化 ';
+  color: #66ccff;
+}
+
 .developer::before {
   content: '开发者 ';
   color: #66ccff;

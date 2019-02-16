@@ -124,7 +124,19 @@
     <text>当前版本</text>
   </view>
   <view class='content'>
-    <text>2019年1月31日 1.0.190131 正式版</text>
+    <text>2019年2月1日 1.1.190201 正式版</text>
+  </view>
+  <view class='subtitle'>
+    <text>更新内容</text>
+  </view>
+  <view class='content fixed'>
+    <text>景深范围计算工具计算出后景深为无穷远时提示输入错误的bug。</text>
+  </view>
+  <view class='content fixed'>
+    <text>朋友圈高清图片生成器输入的图片长宽比大于2:1时发生裁剪的bug。</text>
+  </view>
+  <view class='content enhanced'>
+    <text>朋友圈高清图片生成器的步骤提示。</text>
   </view>
   <view class='subtitle'>
     <text>历史版本</text>
@@ -195,6 +207,9 @@
       <scroll-view scroll-y='true' class='panel-text-holder'>
         <view class='subtitle'>
           <text>版本历史</text>
+        </view>
+        <view class='content'>
+          <text>2019年1月31日 1.0.190131 正式版</text>
         </view>
         <view class='content'>
           <text>2019年1月30日 0.8.190130 Beta版</text>

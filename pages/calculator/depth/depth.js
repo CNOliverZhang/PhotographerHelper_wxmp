@@ -152,7 +152,7 @@ Page({
       let distance = that.data.distance * 10
       let frontDepth = aperture * confusion * distance * distance / (length * length + aperture * distance * confusion)
       let backDepth = aperture * confusion * distance * distance / (length * length - aperture * distance * confusion)
-      if (frontDepth < 0 || backDepth < 0 || isNaN(frontDepth) || isNaN(backDepth)) {
+      if (frontDepth < 0 || isNaN(frontDepth) || isNaN(backDepth)) {
         that.clearInput()
         wx.showModal({
           title: '输入错误',
@@ -161,14 +161,22 @@ Page({
         })
         return
       }
+      if (backDepth < 0) {
+        backDepth = {
+          name: '后景深',
+          value: '无穷远',
+          unit: ''
+        }
+      } else {
+        backDepth = {
+          name: '后景深',
+          value: parseFloat((backDepth / 10).toFixed(2)),
+          unit: 'cm'
+        }
+      }
       frontDepth = {
         name: '前景深',
         value: parseFloat((frontDepth / 10).toFixed(2)),
-        unit: 'cm'
-      }
-      backDepth = {
-        name: '后景深',
-        value: parseFloat((backDepth / 10).toFixed(2)),
         unit: 'cm'
       }
       results.push(frontDepth, backDepth)
