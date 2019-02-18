@@ -10,7 +10,8 @@
     "pages/calculator/calculator",
     "pages/calculator/field/field",
     "pages/index/help/help",
-    "pages/index/mine/mine"
+    "pages/index/mine/mine",
+    "pages/image/gridsDivider/gridsDivider"
   ],
   "window": {
     "backgroundTextStyle": "light",

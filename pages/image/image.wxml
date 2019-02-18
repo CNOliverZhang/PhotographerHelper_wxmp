@@ -1,4 +1,12 @@
 <view class='container'>
+  <button class='block-button' bindtap='gotoPage' id='gridsDivider'>
+    <view class='row-flex grids'>
+      <image class='button-image' mode='aspectFit' src='/images/button/grids.png'></image>
+    </view>
+    <view class='button-mask' hover-class='button-mask__hover'></view>
+  </button>
+</view>
+<view class='container'>
   <button class='block-button' bindtap='gotoPage' id='momentsImage'>
     <view class='row-flex moments'>
       <image class='button-image' mode='aspectFit' src='/images/button/moments.png'></image>

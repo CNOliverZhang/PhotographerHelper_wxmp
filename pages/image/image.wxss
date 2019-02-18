@@ -2,6 +2,12 @@
   height: 60%;
 }
 
+.grids {
+  width: 100%;
+  height: 100%;
+  background-color: #ea4c89;
+}
+
 .moments {
   width: 100%;
   height: 100%;

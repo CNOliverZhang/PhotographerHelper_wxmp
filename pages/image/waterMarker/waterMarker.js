@@ -1,7 +1,5 @@
 const app = getApp()
 
-const maxLength = 2000
-
 Page({
 
   data: {
@@ -10,7 +8,6 @@ Page({
 
   //初始化界面
   onLoad: function (options) {
-    console.log(options)
     let that = this
     let target = 'single'
     if (options.target ) {
@@ -21,8 +18,8 @@ Page({
       mode: 'default',
       size: 1,
       alpha: 100,
-      singleCompress: false,
-      multipleCompress: false
+      compress: false,
+      maxLength: 3000
     })
     let templates = []
     wx.getStorage({
@@ -60,8 +57,8 @@ Page({
       templateName: '',
       multipleStatus: 'default',
       images: [],
-      singleCompress: false,
-      multipleCompress: false
+      compress: false,
+      maxLength: 3000,
     })
   },
 
@@ -237,7 +234,16 @@ Page({
   //开启压缩
   setCompress: function (event) {
     this.setData({
-      [event.currentTarget.dataset.compress]: event.detail.value,
+      compress: event.detail.value,
+      maxLength: 3000,
+      preview: false
+    })
+  },
+
+  //设置压缩分辨率
+  setResolution: function (event) {
+    this.setData({
+      maxLength: event.detail.value,
       preview: false
     })
   },
@@ -280,13 +286,13 @@ Page({
     })
     let width = that.data.width
     let height = that.data.height
-    if (that.data.singleCompress && (width > maxLength || height > maxLength)) {
+    if (that.data.compress && (width > that.data.maxLength || height > that.data.maxLength)) {
       if (width > height) {
-        height = parseInt(height * maxLength / width)
-        width = maxLength
+        height = parseInt(height * that.data.maxLength / width)
+        width = that.data.maxLength
       } else {
-        width = parseInt(width * maxLength / height)
-        height = maxLength
+        width = parseInt(width * that.data.maxLength / height)
+        height = that.data.maxLength
       }
     }
     that.setData({
@@ -508,13 +514,13 @@ Page({
         let height = res.height
         let originalWidth = width
         let originalHeight = height
-        if (that.data.multipleCompress && (width > maxLength || height > maxLength)) {
+        if (that.data.compress && (width > that.data.maxLength || height > that.data.maxLength)) {
           if (width > height) {
-            height = parseInt(height * maxLength / width)
-            width = maxLength
+            height = parseInt(height * that.data.maxLength / width)
+            width = that.data.maxLength
           } else {
-            width = parseInt(width * maxLength / height)
-            height = maxLength
+            width = parseInt(width * that.data.maxLength / height)
+            height = that.data.maxLength
           }
         }
         let image = {

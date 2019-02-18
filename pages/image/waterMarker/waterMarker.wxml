@@ -128,9 +128,18 @@
       <view class='content'>
         <text>是否开启压缩模式</text>
       </view>
-      <switch checked='{{singleCompress}}' color='#fbbc05' bindchange='setCompress' data-compress='singleCompress'></switch>
-      <view class='subcontent'>
+      <switch checked='{{compress}}' color='#fbbc05' bindchange='setCompress'></switch>
+      <view wx:if="{{!compress}}" class='subcontent'>
         <text>如果您在处理大尺寸图片时发生闪退，请开启压缩</text>
+      </view>
+      <view wx:else>
+        <view class='content'>
+          <text>请设置压缩的最大目标分辨率</text>
+        </view>
+        <slider value='{{maxLength}}' min='2000' max='4000' step='500' backgroundColor='#e1e1e1' activeColor='#fbbc05' bindchanging='setResolution' bindchange='setResolution'></slider>
+        <view class='subcontent'>
+          <text>当前设置的最大目标分辨率为 {{maxLength}}px</text>
+        </view>
       </view>
     </view>
     <view class='container subseparator'></view>
@@ -235,9 +244,18 @@
       <view class='content'>
         <text>是否开启压缩模式</text>
       </view>
-      <switch checked='{{multipleCompress}}' color='#fbbc05' bindchange='setCompress' data-compress='multipleCompress'></switch>
-      <view class='subcontent'>
+      <switch checked='{{compress}}' color='#fbbc05' bindchange='setCompress'></switch>
+      <view wx:if="{{!compress}}" class='subcontent'>
         <text>如果您在处理大尺寸图片时发生闪退，请开启压缩</text>
+      </view>
+      <view wx:else>
+        <view class='content'>
+          <text>请设置压缩的最大目标分辨率</text>
+        </view>
+        <slider value='{{maxLength}}' min='2000' max='4000' step='500' backgroundColor='#e1e1e1' activeColor='#fbbc05' bindchanging='setResolution' bindchange='setResolution'></slider>
+        <view class='subcontent'>
+          <text>当前设置的最大目标分辨率为 {{maxLength}}px</text>
+        </view>
       </view>
     </view>
   </view>

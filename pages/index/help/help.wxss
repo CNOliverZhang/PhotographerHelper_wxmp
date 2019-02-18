@@ -1,5 +1,5 @@
 .plan::before {
-  content: '确认加入 ';
+  content: '确认更新 ';
   color: #66ccff;
 }
 
@@ -15,6 +15,11 @@
 
 .enhanced::before {
   content: '优化 ';
+  color: #66ccff;
+}
+
+.added::before {
+  content: '添加 ';
   color: #66ccff;
 }
 
