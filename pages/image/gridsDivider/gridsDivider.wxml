@@ -44,7 +44,7 @@
       </view>
       <slider value='{{position}}' min='0' max='100' backgroundColor='#e1e1e1' activeColor='#ea4c89' bindchanging='setPosition' bindchange='setPosition'></slider>
       <view class='subcontent'>
-        <text>当前设置的截取区域相当原图片的位置为 {{position}}%</text>
+        <text>当前设置的截取区域相对原图片的位置为 {{position}}%</text>
       </view>
     </view>
   </view>
