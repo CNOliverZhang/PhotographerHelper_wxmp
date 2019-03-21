@@ -146,13 +146,16 @@
     <text>当前版本</text>
   </view>
   <view class='content'>
-    <text>2019年2月27日 2.1.190227</text>
+    <text>2019年3月15日 2.2.190315</text>
   </view>
   <view class='subtitle'>
     <text>更新内容</text>
   </view>
   <view class='content enhanced'>
-    <text>图片自定义加水印工具业务逻辑优化。</text>
+    <text>景深范围计算工具支持自定义弥散圆大小。</text>
+  </view>
+  <view class='content enhanced'>
+    <text>图片自定义加水印工具模板应用交互优化。</text>
   </view>
   <view class='subtitle'>
     <text>历史版本</text>
@@ -166,9 +169,6 @@
   </view>
   <view class='content plan'>
     <text>添加图片常用比例裁剪工具。</text>
-  </view>
-  <view class='content plan'>
-    <text>景深范围计算工具支持自定义弥散圆大小。</text>
   </view>
   <view class='content evaluate'>
     <text>图片自定义加水印工具允许自定义字体。</text>
@@ -217,6 +217,12 @@
       <scroll-view scroll-y='true' class='panel-text-holder'>
         <view class='subtitle'>
           <text>版本历史</text>
+        </view>
+        <view class='content'>
+          <text>2019年2月27日 2.1.190227</text>
+        </view>
+        <view class='subcontent enhanced'>
+          <text>图片自定义加水印工具业务逻辑优化。</text>
         </view>
         <view class='content'>
           <text>2019年2月19日 2.0.190219</text>
@@ -343,7 +349,7 @@
           <text>景深范围计算工具</text>
         </view>
         <view class='content'>
-          <text>计算时的弥散圆采用蔡司公司制定的标准进行估算，该标准要求人眼在明视距离（30厘米）外观察常用尺寸（7英寸）的照片时不出现模糊，相应的弥散圆直径约为底片（传感器）对角线长度的1/1730。</text>
+          <text>默认的弥散圆直径采用蔡司公司制定的标准进行估算，该标准要求人眼在明视距离（30厘米）外观察常用尺寸（7英寸）的照片时不出现模糊，相应的弥散圆直径约为底片（传感器）对角线长度的1/1730。您也可以手动设置弥散圆直径。</text>
         </view>
       </scroll-view>
     </view>

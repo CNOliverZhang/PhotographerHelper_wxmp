@@ -112,6 +112,7 @@ Page({
     wx.chooseImage({
       count: 1,
       sourceType: ['album', 'camera'],
+      sizeType: ['original'],
       success: function (res) {
         wx.showToast({
           title: '正在读取',

@@ -180,7 +180,7 @@
       </view>
     </view>
     <view wx:if="{{mode == 'template'}}" class='container'>
-      <button class='main-button' bindtap='setPanelStatus' data-status='show'>
+      <button class='main-button' bindtap='setSaveTemplatePanel' data-status='show'>
         <text>保存水印模板</text>
         <view class='button-mask' hover-class='button-mask__hover'></view>
       </button>
@@ -202,7 +202,7 @@
     </view>
   </view>
 </view>
-<view class="panel-holder {{panel != 'show' ? 'panel-hidden' : ''}}">
+<view class="panel-holder {{saveTemplatePanel != 'show' ? 'panel-hidden' : ''}}">
   <view class='panel'>
     <view class='container'>
       <scroll-view scroll-y='true' class='panel-text-holder'>
@@ -213,7 +213,7 @@
       </scroll-view>
     </view>
     <view class='container row-flex panel-button-holder'>
-      <button class='side-text-button' bindtap='setPanelStatus' data-status=''>
+      <button class='side-text-button' bindtap='setSaveTemplatePanel' data-status=''>
         <text>取消</text>
         <view class='button-mask' hover-class='button-mask__hover'></view>
       </button>
@@ -376,7 +376,7 @@
     </view>
     <view wx:for="{{templates}}" wx:key="{{index}}">
       <view class='container'>
-        <button class='block-button' bindtap='useTemplate' bindlongpress='deleteTemplate' data-template-index='{{index}}'>
+        <button class='block-button' bindtap='useTemplatePanel' bindlongpress='deleteTemplate' data-template-index='{{index}}'>
           <view class='container'>
             <view class='content info-title'>
               <text>{{item.name}}</text>
@@ -436,6 +436,33 @@
     <view class='half'>
       <button class='main-button' open-type='share'>
         <text>分享</text>
+        <view class='button-mask' hover-class='button-mask__hover'></view>
+      </button>
+    </view>
+  </view>
+</view>
+<view class="panel-holder {{useTemplatePanel != 'show' ? 'panel-hidden' : ''}}">
+  <view class='panel'>
+    <view class='container'>
+      <view class='subtitle'>
+        <text>请选择您想要执行的操作</text>
+      </view>
+    </view>
+    <view class='container'>
+      <button class='main-button' bindtap='useTemplate' data-target='image'>
+        <text>使用本模板给图片添加水印</text>
+        <view class='button-mask' hover-class='button-mask__hover'></view>
+      </button>
+    </view>
+    <view class='container'>
+      <button class='main-button' bindtap='useTemplate' data-target='template'>
+        <text>基于本模板制作新水印模板</text>
+        <view class='button-mask' hover-class='button-mask__hover'></view>
+      </button>
+    </view>
+    <view class='container row-flex panel-button-holder'>
+      <button class='side-text-button' bindtap='clearData'>
+        <text>取消</text>
         <view class='button-mask' hover-class='button-mask__hover'></view>
       </button>
     </view>

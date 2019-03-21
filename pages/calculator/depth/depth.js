@@ -10,7 +10,9 @@ Page({
   onLoad: function (options) {
     this.setData({
       currentTab: 'depth',
-      results: []
+      results: [],
+      customConfusion: false,
+      confusionRatio: 1730,
     })
   },
 
@@ -51,7 +53,7 @@ Page({
 
   //设置画幅
   setFrame: function (event) {
-    let confusion = Math.sqrt(1872) / 1730
+    let confusion = Math.sqrt(1872)
     switch (event.currentTarget.dataset.frame) {
       case 'fullFrame':
         break
@@ -71,7 +73,6 @@ Page({
         confusion = confusion / 2.7
         break
     }
-    this.clearInput()
     this.setData({
       confusion: confusion,
       frame: event.currentTarget.dataset.frame
@@ -80,7 +81,6 @@ Page({
 
   //设置景深模式
   setDepthMode: function (event) {
-    this.clearInput()
     this.setData({
       depthMode: event.currentTarget.dataset.depthMode
     })
@@ -121,7 +121,25 @@ Page({
       }
     }
     this.setData({
-      [inputedTarget]: input
+      [inputedTarget]: input,
+      results: []
+    })
+  },
+
+  //设置弥散圆模式
+  setConfusionMode: function (event) {
+    this.setData({
+      customConfusion: event.detail.value,
+      confusionRatio: 1730,
+      results: []
+    })
+  },
+
+  //设置弥散圆
+  setConfusionRatio: function (event) {
+    this.setData({
+      confusionRatio: event.detail.value,
+      results: []
     })
   },
 
@@ -147,7 +165,7 @@ Page({
         return
       }
       let aperture = that.data.aperture
-      let confusion = that.data.confusion
+      let confusion = that.data.confusion / that.data.confusionRatio
       let length = that.data.length
       let distance = that.data.distance * 10
       let frontDepth = aperture * confusion * distance * distance / (length * length + aperture * distance * confusion)
@@ -202,7 +220,7 @@ Page({
         return
       }
       let aperture = that.data.aperture
-      let confusion = that.data.confusion
+      let confusion = that.data.confusion / that.data.confusionRatio
       let depth = that.data.depth * 10
       let distance = that.data.distance * 10
       if (that.data.depthMode == 'front') {
@@ -277,7 +295,7 @@ Page({
         return
       }
       let length = that.data.length
-      let confusion = that.data.confusion
+      let confusion = that.data.confusion / that.data.confusionRatio
       let depth = that.data.depth * 10
       let distance = that.data.distance * 10
       if (that.data.depthMode == 'front') {
@@ -352,7 +370,7 @@ Page({
         return
       }
       let length = that.data.length
-      let confusion = that.data.confusion
+      let confusion = that.data.confusion / that.data.confusionRatio
       let depth = that.data.depth * 10
       let aperture = that.data.aperture
       if (that.data.depthMode == 'front') {

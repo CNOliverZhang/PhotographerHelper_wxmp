@@ -74,6 +74,29 @@
   </view>
 </view>
 <view class='container'>
+  <view class='subtitle'>
+    <text>弥散圆设置</text>
+  </view>
+</view>
+<view class='container'>
+  <view class='content'>
+    <text>是否自定义弥散圆直径</text>
+  </view>
+  <switch checked='{{customConfusion}}' color='#34a853' bindchange='setConfusionMode'></switch>
+  <view wx:if="{{!customConfusion}}" class='subcontent'>
+    <text>默认采用蔡司公式计算，为传感器对角线长的 1/1730</text>
+  </view>
+  <view wx:else>
+    <view class='content'>
+      <text>请设置弥散圆直径与传感器对角线长的比值</text>
+    </view>
+    <slider value='{{confusionRatio}}' min='1000' max='3000' step='10' backgroundColor='#e1e1e1' activeColor='#34a853' bindchanging='setConfusionRatio' bindchange='setConfusionRatio'></slider>
+    <view class='subcontent'>
+      <text>当前设置的弥散圆直径为传感器对角线长的 1/{{confusionRatio}}</text>
+    </view>
+  </view>
+</view>
+<view class='container'>
   <button class='main-button' bindtap='calculate'>
     <text>计算{{target}}</text>
     <view class='button-mask' hover-class='button-mask__hover'></view>
@@ -95,11 +118,6 @@
           <text>{{item.value}} {{item.unit}}</text>
         </view>
       </view>
-    </view>
-  </view>
-  <view class='container'>
-    <view class='subcontent'>
-      <text>计算中使用的弥撒圆直径采用蔡司公式估算</text>
     </view>
   </view>
 </view>

@@ -53,7 +53,8 @@ Page({
       position: '',
       positionX: '',
       positionY: '',
-      panel: '',
+      saveTemplatePanel: '',
+      useTemplatePanel: '',
       templateName: '',
       multipleStatus: 'default',
       images: [],
@@ -113,6 +114,13 @@ Page({
             })
             wx.hideToast()
           }
+        })
+      },
+      fail: function () {
+        that.clearData()
+        wx.showToast({
+          title: '读取失败',
+          icon: 'none'
         })
       }
     })
@@ -375,8 +383,8 @@ Page({
     
   },
 
-  //设置面板状态
-  setPanelStatus: function (event) {
+  //设置模板保存面板状态
+  setSaveTemplatePanel: function (event) {
     if (this.data.preview == false) {
       wx.showModal({
         title: '未生成预览',
@@ -386,7 +394,7 @@ Page({
       return
     }
     this.setData({
-      panel: event.currentTarget.dataset.status,
+      saveTemplatePanel: event.currentTarget.dataset.status,
       templateName: ''
     })
   },
@@ -458,7 +466,7 @@ Page({
       },
       complete: function () {
         that.setData({
-          panel: ''
+          saveTemplatePanel: ''
         })
       }
     })
@@ -728,19 +736,12 @@ Page({
     }
   },
 
-  //使用模板
-  useTemplate: function (event) {
+  //设置调用模板面面板状态
+  useTemplatePanel: function (event) {
     let that = this
     index = event.currentTarget.dataset.templateIndex
     template = that.data.templates[index]
-    wx.showModal({
-      title: '已应用模板',
-      content: '已应用模板参数，请选择模式进入下一步。',
-      showCancel: false
-    })
     that.setData({
-      currentTab: 'single',
-      mode: 'default',
       size: template.size,
       alpha: template.alpha,
       text: template.text,
@@ -749,7 +750,23 @@ Page({
       position: template.position,
       positionX: template.positionX,
       positionY: template.positionY,
+      useTemplatePanel: 'show',
     })
+  },
+
+  //使用模板
+  useTemplate: function (event) {
+    let that = this
+    that.setData({
+      currentTab: 'single',
+      mode: 'default',
+      useTemplatePanel: '',
+    })
+    if (event.currentTarget.dataset.target == 'image') {
+      that.singleUpload()
+    } else {
+      that.createTemplate()
+    }
   },
 
   //删除模板
