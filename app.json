@@ -44,5 +44,6 @@
         "selectedIconPath": "/images/tabbar/calculator_selected.png"
       }
     ]
-  }
+  },
+  "sitemapLocation": "sitemap.json"
 }
